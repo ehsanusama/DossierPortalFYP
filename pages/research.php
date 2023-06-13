@@ -43,24 +43,7 @@
 
                 <div class="col-sm-12">
                     <div class="bg-dar w-100 p-2 mt-5 ">
-                        <?php
-                        $researchData = [
-                            "Research articles as",
-                            "Presentation in Conferences",
-                            "Books Published",
-                            "No. of Patents",
-                            "Book Chapters Published",
-                            "Technologies Licensed",
-                            "Research funding (Rs. Million)",
-                            "Research Supervision (As Supervisor)",
-                            "Research Supervision (As Co-Supervisor)",
-                            "BS Supervision"
-                        ];
-                        $acdemicdata = [
-                            "No. of courses (unique) Taught",
-
-                        ];
-                        ?>
+                        
 
                     </div>
                     <div class="panel panel-default panel-body">

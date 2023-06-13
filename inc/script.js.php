@@ -816,17 +816,17 @@
 	})
 
 	$(document).on('click', ".pdf_portrait_btn", function() {
+
 		var element = document.getElementById('pdfBodyPortrait');
 		var today = new Date();
 
 		var date = today.getFullYear() + '_' + (today.getMonth() + 1) + '_' + today.getDate();
 
 		var time = today.getHours() + "_" + today.getMinutes() + "_" + today.getSeconds();
-
 		var dateTime = date + '_' + time;
 		var opt = {
 			margin: 1,
-			filename: 'Attendance_Report_' + dateTime + '.pdf',
+			filename: 'Dossier_Report_' + dateTime + '.pdf',
 			image: {
 				type: 'jpeg',
 				quality: 0.98

@@ -670,6 +670,36 @@ function getUserByBusiness($dbc, $business_id)
 	endwhile;
 	return $data;
 }
+
+$researchData = [
+	"Research articles as",
+	"Presentation in Conferences",
+	"Books Published",
+	"No. of Patents",
+	"Book Chapters Published",
+	"Technologies Licensed",
+	"Research funding (Rs. Million)",
+	"Research Supervision (As Supervisor)",
+	"Research Supervision (As Co-Supervisor)",
+	"BS Supervision"
+];
+
+$academicData = [
+	"No. of courses (unique) Taught",
+	"Courses (New) Designed/ Modified ",
+	"Course Books Published ",
+];
+
+$otherContributions = [
+	"MOUs/ Collaborations",
+	"Organization of trainings/workshops/seminars/conferences",
+	"Peer review of journal articles (Number) ",
+	"External Examiner",
+	"Administrative/non-academic departmental duties/Teachers evaluations",
+];
+
+
 @include_once 'inc/code.php';
 // ip_details($ip);
+
 ?>

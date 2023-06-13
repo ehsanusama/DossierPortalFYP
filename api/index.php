@@ -741,7 +741,7 @@ if (!empty($_REQUEST['action'])) {
                 'user_id' => $fetchUser['user_id']
             ];
             if (insert_data($dbc, "academic_qualification", $data)) {
-                insert_data($dbc, "certifications", $cdata);
+                insert_data($dbc, " ", $cdata);
                 $response = [
                     "msg" => "Academic Qualification Add Successfully",
                     "sts" => "success",

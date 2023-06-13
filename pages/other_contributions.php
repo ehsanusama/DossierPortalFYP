@@ -15,13 +15,7 @@
                 <div class="col-sm-12">
                     <div class="bg-dar w-100 p-2 mt-5 ">
                         <?php
-                        $otherContributions = [
-                            "MOUs/ Collaborations",
-                            "Organization of trainings/workshops/seminars/conferences",
-                            "Peer review of journal articles (Number) ",
-                            "External Examiner",
-                            "Administrative/non-academic departmental duties/Teachers evaluations",
-                        ];
+                        
                         ?>
 
                     </div>

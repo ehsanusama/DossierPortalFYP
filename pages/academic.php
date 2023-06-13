@@ -15,11 +15,7 @@
                 <div class="col-sm-12">
                     <div class="bg-dar w-100 p-2 mt-5 ">
                         <?php
-                        $academicData = [
-                            "No. of courses (unique) Taught",
-                            "Courses (New) Designed/ Modified ",
-                            "Course Books Published ",
-                        ];
+
                         ?>
 
                     </div>
@@ -70,7 +66,6 @@
 
 <div class='portlet light'>
     <div class="portlet-title">
-        <h2 class=''>(1.2)2. Research Achievements</h2>
     </div>
     <div class='portlet-body'>
         <div class="table-responsive">

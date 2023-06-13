@@ -74,32 +74,6 @@
                 <?php endif; ?>
             <?php endif; ?>
             <?php if ($getRoleEmployee >= 1) : ?>
-                <li class="nav-item">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="fa fa-tasks"></i>
-                        <span class="title">Task Management</span>
-                        <span class="arrow open"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item">
-                            <a href="index.php?nav=<?= base64_encode('add_task') ?>" class="nav-link">
-                                <i class="fa fa-plus"></i>
-                                <span class="title">
-                                    Add Task
-                                </span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="index.php?nav=<?= base64_encode('emp_monthly_attendance_report') ?>&business=<?= @$_SESSION['business'] ?>" class="nav-link">
-                        <i class="fa fa-file"></i>
-                        <span class="title">
-                            Attendance Report
-                        </span>
-                    </a>
-                </li>
             <?php endif; ?>
             <li class="nav-item">
                 <a href="index.php?nav=<?= base64_encode('profile') ?>&business=<?= @$_SESSION['business'] ?>" class="nav-link">
