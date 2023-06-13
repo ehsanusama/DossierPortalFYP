@@ -741,7 +741,7 @@ if (!empty($_REQUEST['action'])) {
                 'user_id' => $fetchUser['user_id']
             ];
             if (insert_data($dbc, "academic_qualification", $data)) {
-                insert_data($dbc, " ", $cdata);
+                insert_data($dbc, "certifications ", $cdata);
                 $response = [
                     "msg" => "Academic Qualification Add Successfully",
                     "sts" => "success",
@@ -754,6 +754,90 @@ if (!empty($_REQUEST['action'])) {
                     "action" => $_REQUEST['action']
                 ];
             }
+        }
+    } /*professional_experience*/ elseif ($_REQUEST['action'] == "professional_experience") {
+        $data = [
+            'institute' => $_REQUEST['institute'],
+            'position' => $_REQUEST['position'],
+            'duties' => $_REQUEST['duties'],
+            'year_from' => $_REQUEST['from'],
+            'year_to' => $_REQUEST['to'],
+            'user_id' => $fetchUser['user_id']
+        ];
+        if (insert_data($dbc, "professional_experience", $data)) {
+            $response = [
+                "msg" => "Professional Experience Add Successfully",
+                "sts" => "success",
+                "action" => $_REQUEST['action']
+            ];
+        } else {
+            $response = [
+                "msg" => mysqli_error($dbc),
+                "sts" => "danger",
+                "action" => $_REQUEST['action']
+            ];
+        }
+    } /*statement_teaching*/ elseif ($_REQUEST['action'] == "statement_teaching") {
+
+        $data = [
+            'statement_teaching_text' => $_REQUEST['statement_teaching_text'],
+            'user_id' => $fetchUser['user_id']
+        ];
+        if (empty($_REQUEST['id'])) {
+
+            if (insert_data($dbc, "statement_teaching", $data)) {
+                $response = [
+                    "msg" => "Statement Teaching Added Successfully",
+                    "sts" => "success",
+                    "action" => $_REQUEST['action']
+                ];
+            } else {
+                $response = [
+                    "msg" => mysqli_error($dbc),
+                    "sts" => "danger",
+                    "action" => $_REQUEST['action']
+                ];
+            }
+            # code...
+        } else {
+            if (update_data($dbc, "statement_teaching", $data, "id", $_REQUEST['id'])) {
+                $response = [
+                    "msg" => "Statement Teaching Updated Successfully",
+                    "sts" => "success",
+                    "action" => $_REQUEST['action']
+                ];
+            } else {
+                $response = [
+                    "msg" => mysqli_error($dbc),
+                    "sts" => "danger",
+                    "action" => $_REQUEST['action']
+                ];
+            }
+        }
+    }
+    /****************taught_course_details*******************/
+    elseif ($_REQUEST['action'] == "taught_course_details") {
+        $data = [
+            'title' => $_REQUEST['title'],
+            'credit_hour' => $_REQUEST['credit_hour'],
+            'teaching_hour' => $_REQUEST['teaching_hour'],
+            'phd_ms_bs' => $_REQUEST['phd_ms_bs'],
+            'user_id' => $fetchUser['user_id']
+
+        ];
+
+        if (insert_data($dbc, "taught_course_details", $data)) {
+            $response = [
+                "msg" => "Record Inserted Successfully",
+                "sts" => "success",
+                "action" => $_REQUEST['action']
+            ];
+        } else {
+            $response = [
+                "msg" => mysqli_error($dbc),
+                "sts" => "danger",
+                "action" => $_REQUEST['action']
+            ];
         }
     } else {
     }

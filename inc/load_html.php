@@ -696,7 +696,27 @@ if ($_REQUEST['action'] == "load_mission_form") :
 	</form>
 	</div>
 <?php endif;
-
+/******** Personal Mission *********/
+if ($_REQUEST['action'] == "statement_teaching_form") :
+	@$fetchresearchinterests = (!empty($_REQUEST['field'])) ? fetchRecord($dbc, "statement_teaching", 'id', $_REQUEST['field']) : "";
+	@$btn_value = (empty($fetchresearchinterests)) ? "Add" : "Update";
+?>
+	<div class="bg-dar w-100 text-center p-2 mt-5 ">
+		<h2>(2) Personal Mission</h2>
+	</div>
+	<form action="api/index.php" method="post" class="ajax-form" style='box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;padding:2%' id='' method="dialog">
+		<input type="hidden" name="action" value="statement_teaching">
+		<input type="hidden" name="id" value="<?= @$fetchresearchinterests['id'] ?>">
+		<div class="form-group">
+			<textarea name="statement_teaching_text" class="form-control smsMessage" placeholder="Enter Your Message" id="" cols="30" rows="3"><?= @$fetchresearchinterests['statement_teaching_text'] ?></textarea>
+		</div>
+		<!-- Row -->
+		<div class='row'>
+			<button type="submit" class="btn btn-primary ml-2 "><?= $btn_value ?></button>
+		</div>
+	</form>
+	</div>
+<?php endif;
 
 ?>
 <script>

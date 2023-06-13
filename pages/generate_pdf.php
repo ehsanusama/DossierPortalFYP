@@ -367,7 +367,38 @@
                 </div>
             </div>
             <div class="container">
-                <h3></h3>
+                <h3>(4) Professional Experience</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Name of Institution </th>
+                                <th class="text-center">Position Held </th>
+                                <th class="text-center">Duties </th>
+                                <th class="text-center">From </th>
+                                <th class="text-center">To </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $sql = "SELECT * FROM professional_experience WHERE user_id = $fetchUser[user_id]";
+                            $q = mysqli_query($dbc, $sql);
+                            while ($row = mysqli_fetch_assoc($q)) :
+                            ?>
+                                <tr>
+                                    <td><?= $row['institute'] ?></td>
+                                    <td><?= $row['position'] ?></td>
+                                    <td><?= $row['duties'] ?></td>
+                                    <td><?= $row['year_from'] ?></td>
+                                    <td><?= $row['year_to'] ?></td>
+                                </tr>
+
+                            <?php
+                            endwhile;
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     <?php endif; ?>
