@@ -1,0 +1,75 @@
+.sheet,body{margin:0}@page{margin:0}.sheet{overflow:hidden;position:relative;box-sizing:border-box;page-break-after:always}body.A3 .sheet{width:297mm;height:419mm}body.A3.landscape .sheet{width:420mm;height:296mm}body.A4 .sheet{width:210mm;height:296mm}body.A4.landscape .sheet{width:297mm;height:209mm}body.A5 .sheet{width:148mm;height:209mm}body.A5.landscape .sheet{width:210mm;height:147mm}body.letter .sheet{width:216mm;height:279mm}body.letter.landscape .sheet{width:280mm;height:215mm}body.legal .sheet{width:216mm;height:356mm}body.legal.landscape .sheet{width:357mm;height:215mm}.sheet.padding-10mm{padding:10mm}.sheet.padding-15mm{padding:15mm}.sheet.padding-20mm{padding:20mm}.sheet.padding-25mm{padding:25mm}@media screen{body{background:#e0e0e0}.sheet{background:#fff;box-shadow:0 .5mm 2mm rgba(0,0,0,.3);margin:5mm auto}}@media print{body:;body.A3.landscape{width:420mm}body.A3,body.A4.landscape{width:297mm}body.A4,body.A5.landscape{width:210mm}body.A5{width:148mm}body.legal,body.letter{width:216mm}body.letter.landscape{width:280mm}body.legal.landscape{width:357mm}
+
+@font-face {
+  font-family: wayfindingbold;
+  src: url('../fonts/WAYFINDINGSANSRGN-BOLD.TTF') format('truetype'),
+}
+@font-face {
+  font-family: wayfindingregular;
+  src: url('../fonts/WAYFINDINGSANSRGN-REGULAR.TTF') format('truetype'),
+}
+@media print {
+  @page {
+    size: A4 landscape
+  }
+}
+
+h1 {
+  font-family: wayfindingbold;
+}
+h4 {
+  font-family: wayfindingregular;
+}
+h4 {
+  margin: 0; padding: 0;
+  font-weight: normal;
+  font-size: 1em;
+}
+
+.certificate {
+  margin: auto;
+  position: relative;
+}
+
+@media screen {
+  /* .certificate {
+    background: url('../imgs/certificate_template.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+  } */
+}
+
+#printbox {
+  margin-top: 200px;
+  margin-left: 45px;
+  color: #22477c;
+  font-size: 20pt;
+  /*border: 1px solid black;*/
+}
+
+.static-text {
+  padding-top: 9px;
+}
+
+.std-name {
+  margin-top: -4px;
+  text-transform: uppercase;
+}
+
+.crs-name {
+  font-size: 1.5em;
+  margin-top: .1em;
+}
+
+.award-date {
+  padding-top: 40px;
+}
+
+.validation-info {
+  /*border: 1px solid;*/
+  font-size: 12px;
+  width: 15em;
+  position: absolute;
+  bottom: 8.5mm;
+  right: 25mm;
+}
