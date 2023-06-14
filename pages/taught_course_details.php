@@ -8,7 +8,7 @@
         <h2 class=''>(5.2) Detail of Courses Taught</h2>
     </div>
     <div class='portlet-body'>
-        <form action="api/index.php" method="post" class="ajax-form">
+        <form action="api/index.php" method="post" class="ajax-form-with-file" enctype="multipart/form-data">
             <input type="hidden" name="action" value="taught_course_details">
             <div class="row">
                 <div class="col-sm-12">
@@ -21,13 +21,17 @@
                                     <th colspan="2" class="text-center">Teaching Hours (since 20xx) </th>
                                     <th colspan="2" class="text-center">PhD/MS/BS </th>
                                     <th colspan="2" class="text-center">Year</th>
+                                    <th colspan="1">Document</th>
                                 </tr>
                                 <tr class="product-row">
                                     <td colspan="2"><input type="text" class="form-control" name="title"></input></td>
                                     <td colspan="2"><input type="text" class="form-control " name="credit_hour"></td>
                                     <td colspan="2"><input type="text" class="form-control " name="teaching_hour"></td>
                                     <td colspan="2"><input type="text" class="form-control " name="phd_ms_bs"></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="phd_ms_bs"></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="year"></td>
+                                    <td colspan="1"><input type="file" id="img" class="center-block" onchange="uploadImage(this)" data-target="#aImgShow" name="f">
+                                    </td>
+
 
                                 </tr>
                             </table>

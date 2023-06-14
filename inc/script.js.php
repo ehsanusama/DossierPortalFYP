@@ -8,7 +8,7 @@
 			$(window).scrollTop(localStorage.getItem("scrollPosition"));
 		}
 	});
-	var imageTypes = ['jpeg', 'jpg', 'png', 'svg', 'gif']; //Validate the images to show
+	var imageTypes = ['jpeg', 'jpg', 'png', 'svg', 'gif', 'txt']; //Validate the images to show
 
 	function showImage(src, target)
 
@@ -122,7 +122,7 @@
 	})
 
 	$(function() {
-		var response_module = ["login", "forgot_password_module", "register_module", "executive_summary", 'register_staff_module', 'research_data', 'academic_data', 'other_contributions'];
+		var response_module = ["login", "forgot_password_module", "register_module", "executive_summary", 'register_staff_module', 'research_data', 'academic_data', 'other_contributions', 'taught_course_details', 'traning_conducted'];
 		$(document).on('submit', '.ajax-form', function() {
 			var form = $(this);
 
@@ -206,19 +206,16 @@
 								window.location = 'index.php'
 							}, 1500)
 						}
-						if ((json.action == "register_staff_module" || json.action ==
-								'send_billing_notification' || json.action == 'add_time_off' ||
-								json.action == 'cancel_billing' || json.action ==
-								"business_module") && json.sts == "success") {
+						if ((json.action == "register_staff_module" || json.action == "taught_course_details" || json.action == "traning_conducted") && json.sts == "success") {
 							setTimeout(function() {
 								$(".modal").modal('hide');
-								window.location = window.location.href
+								window.location = window.location.href;
 								window.location =
-									"index.php?nav=<?= @$_REQUEST['nav'] ?>&business=<?= @$_REQUEST['business'] ?>"
+									"index.php?nav=<?= @$_REQUEST['nav'] ?>"
 							}, 1500)
 						}
 					} else {
-						if (json.action == "business_module" && json.sts == "success") {
+						if (json.sts == "success") {
 							$(".modal").modal('hide');
 							setTimeout(function() {
 								window.location = 'index.php'

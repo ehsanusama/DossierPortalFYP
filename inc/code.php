@@ -138,7 +138,6 @@ if (isset($_REQUEST['update_user'])) {
 		upload_pic($_FILES['f'], "img/uploads/");
 		$data['user_pic'] = $_SESSION['pic_name'];
 	}
-
 	if (mysqli_num_rows(mysqli_query($dbc, "SELECT * FROM users WHERE user_password='$_REQUEST[user_password]' AND user_id='$user_id'")) == 0) {
 		$data["user_password"] = md5($_REQUEST['user_password']);
 	}

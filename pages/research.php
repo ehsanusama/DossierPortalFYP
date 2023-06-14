@@ -13,7 +13,7 @@
     </div>
     <div class='portlet-body'>
         <span>
-            <?= $summary['research_interests'] ?>
+            <?= @$summary['research_interests'] ?>
         </span>
         <div class="bg-dar w-100 text-center p-2 mt-5 ">
             <?php if (empty($summary['user_id'])) { ?>
@@ -37,13 +37,12 @@
         <h2 class=''>(1.2)2. Research Achievements</h2>
     </div>
     <div class='portlet-body'>
-        <form action="api/index.php" method="post" class="ajax-form">
+        <form action="api/index.php" method="post" class="ajax-form-with-file" enctype="multipart/form-data">
             <input type="hidden" name="action" value="research_data">
             <div class="row">
-
                 <div class="col-sm-12">
                     <div class="bg-dar w-100 p-2 mt-5 ">
-                        
+
 
                     </div>
                     <div class="panel panel-default panel-body">

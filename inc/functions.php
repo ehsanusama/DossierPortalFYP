@@ -289,8 +289,7 @@ function upload_pic($file, $url)
 		$msg = "Error while uploading....";
 		unlink($temp_name);
 		// exit();
-	}
-	if (move_uploaded_file($temp_name, $url)) {
+	} elseif (move_uploaded_file($temp_name, $url)) {
 		return true;
 	} else {
 		$sts = "info";
