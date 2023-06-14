@@ -464,8 +464,8 @@
                         <tbody>
                             <?php
                             $sql = "SELECT * FROM professional_experience WHERE user_id = $fetchUser[user_id]";
-                            $q = mysqli_query($dbc, $sql);
-                            while ($row = mysqli_fetch_assoc($q)) :
+                            $professional_experience_q = mysqli_query($dbc, $sql);
+                            while ($row = mysqli_fetch_assoc($professional_experience_q)) :
                             ?>
                                 <tr>
                                     <td><?= $row['institute'] ?></td>
@@ -633,25 +633,54 @@
 
             <div class="container">
                 <h3>Annexure 2:</h4>
-                    <h4>Administrative / Non-academic departmental duties</h4>
+                    <h4>Academic Qualification</h4>
             </div>
             <!-----------------Annexure 3:--------------------->
 
             <div class="container">
                 <h3>Annexure 3:</h4>
-                    <h4>Administrative / Non-academic departmental duties</h4>
+                    <h4>Professional Experience</h4>
+                    <?php
+                    $sql = "SELECT * FROM professional_experience WHERE user_id = $fetchUser[user_id]";
+                    $professional_experience_q = mysqli_query($dbc, $sql);
+                    while ($row = mysqli_fetch_assoc($professional_experience_q)) :
+                    ?>
+                        <img src="img/uploads/<?= $row['file'] ?>" alt=""> <br><br>
+                    <?php
+                    endwhile;
+                    ?>
             </div>
             <!-----------------Annexure 4:--------------------->
 
             <div class="container">
                 <h3>Annexure 4:</h4>
-                    <h4>Administrative / Non-academic departmental duties</h4>
+                    <h4>Detail of Courses Taught</h4>
+                    <?php
+                    $sql = "SELECT * FROM taught_course_details WHERE user_id = $fetchUser[user_id]";
+                    $professional_experience_q = mysqli_query($dbc, $sql);
+                    while ($row = mysqli_fetch_assoc($professional_experience_q)) :
+                    ?>
+                        <img src="img/uploads/<?= $row['document'] ?>" alt=""> <br><br>
+                    <?php
+                    endwhile;
+                    ?>
+
             </div>
             <!-----------------Annexure 5:--------------------->
 
             <div class="container">
                 <h3>Annexure 5:</h4>
-                    <h4>Administrative / Non-academic departmental duties</h4>
+                    <h4>Trainings & Certificates (Attended) / Conducted</h4>
+                    <?php
+                    $sql = "SELECT * FROM traning_conducted WHERE user_id = $fetchUser[user_id]";
+                    $professional_experience_q = mysqli_query($dbc, $sql);
+                    while ($row = mysqli_fetch_assoc($professional_experience_q)) :
+                    ?>
+                        <img src="img/uploads/<?= $row['file'] ?>" alt=""> <br><br>
+                    <?php
+                    endwhile;
+                    ?>
+
             </div>
         </div>
     <?php endif; ?>

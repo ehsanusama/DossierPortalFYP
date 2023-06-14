@@ -122,7 +122,7 @@
 	})
 
 	$(function() {
-		var response_module = ["login", "forgot_password_module", "register_module", "executive_summary", 'register_staff_module', 'research_data', 'academic_data', 'other_contributions', 'taught_course_details', 'traning_conducted'];
+		var response_module = ["login", "forgot_password_module", "register_module", "executive_summary", 'register_staff_module', 'research_data', 'academic_data', 'other_contributions', 'professional_experience', 'taught_course_details', 'traning_conducted'];
 		$(document).on('submit', '.ajax-form', function() {
 			var form = $(this);
 
@@ -206,7 +206,7 @@
 								window.location = 'index.php'
 							}, 1500)
 						}
-						if ((json.action == "register_staff_module" || json.action == "taught_course_details" || json.action == "traning_conducted") && json.sts == "success") {
+						if ((json.action == "register_staff_module" || json.action == "professional_experience" || json.action == "taught_course_details" || json.action == "traning_conducted") && json.sts == "success") {
 							setTimeout(function() {
 								$(".modal").modal('hide');
 								window.location = window.location.href;

@@ -8,7 +8,7 @@
         <h2 class=''>(4) Professional Experience</h2>
     </div>
     <div class='portlet-body'>
-        <form action="api/index.php" method="post" class="ajax-form">
+        <form action="api/index.php" method="post" class="ajax-form-with-file" enctype="multipart/form-data">
             <input type="hidden" name="action" value="professional_experience">
             <div class="row">
                 <div class="col-sm-12">
@@ -21,6 +21,7 @@
                                     <th colspan="2" class="text-center">Duties </th>
                                     <th colspan="1" class="text-center">From </th>
                                     <th colspan="1" class="text-center">To </th>
+                                    <th colspan="1">File</th>
                                 </tr>
                                 <tr class="product-row">
                                     <td colspan="2"><input type="text" class="form-control" name="institute"></input></td>
@@ -28,6 +29,8 @@
                                     <td colspan="2"><input type="text" class="form-control " name="duties"></td>
                                     <td colspan="1"><input type="text" class="form-control " name="from"></td>
                                     <td colspan="1"><input type="text" class="form-control " name="to"></td>
+                                    <td colspan="1"><input type="file" id="img" class="center-block" onchange="uploadImage(this)" data-target="#aImgShow" name="f">
+
                                 </tr>
                             </table>
                         </div><!-- row -->

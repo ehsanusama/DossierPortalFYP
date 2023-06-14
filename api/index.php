@@ -767,6 +767,10 @@ if (!empty($_REQUEST['action'])) {
             'year_to' => $_REQUEST['to'],
             'user_id' => $fetchUser['user_id']
         ];
+        if (@$_FILES['f']['tmp_name']) {
+            upload_pic($_FILES['f'], "../img/uploads/");
+            $data['file'] = $_SESSION['pic_name'];
+        }
         if (insert_data($dbc, "professional_experience", $data)) {
             $response = [
                 "msg" => "Professional Experience Add Successfully",
