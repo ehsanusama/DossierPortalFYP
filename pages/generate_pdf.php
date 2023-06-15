@@ -111,70 +111,69 @@
                     </div>
                     <h3 class="mt-2" style="font-size: 21px; text-decoration: underline;">TO BE FILLED BY THE APPLICANT IN BLOCK LETTERS</h3>
                     <hr style="    opacity: 1;margin: 9px 0;">
-                    <table class="border" width="100%" style="width: 100%;">
+                    <table class="border" width="100%" style="width: 100%;text-transform:capitalize">
                         <tr>
                             <th style="font-size: 18px;background-color: #ddd;padding: 15px 4px;font-weight: 500; " colspan="3">A: PERSONAL DETAILS</th>
 
                         </tr>
+                        <?php @$fetchUserExtra = (array) json_decode($fetchUser['user_extra']); ?>
                         <tr>
-                            <td style="width: 39%;">Name:_________________</td>
-                            <td> Father name: ______________</td>
+                            <td style="width: 39%;">Name:<?= @$fetchUser['user_first_name'] ?></td>
+                            <td> Father name: <?= @$fetchUser['user_last_name'] ?></td>
                         </tr>
 
 
                         <tr>
-                            <td>DOB: ________________</td>
-                            <td style="width: 0;"> Age: ____________ </td>
-                            <td style="position: absolute;
-                    left: 53%;">CNIC #</td>
+                            <td>DOB: <?= @$fetchUser['user_dob'] ?></td>
+                            <td style="width: 5%;"> Age: <?= @$fetchUserExtra['age'] ?> </td>
+                            <td style="position: absolute; left: 53%;">CNIC # <?= @$fetchUserExtra['cnic'] ?> </td>
                         </tr>
                         <tr>
-                            <td>Domicile: ______________</td>
-                            <td> Nationality: _______________
+                            <td>Domicile: <?= @$fetchUserExtra['domicile'] ?></td>
+                            <td> Nationality: <?= @$fetchUserExtra['nationality'] ?>
                             </td>
 
                         </tr>
 
                         <tr>
-                            <td>Designation: _______________</td>
+                            <td>Designation: <?= @$fetchUser['designation'] ?></td>
                         </tr>
 
 
                         <tr>
-                            <td>Department: _________________ </td>
-                            <td style="width: 50%;"> Date of Appointment at NTU: _______________
+                            <td>Department: <?= @$fetchUserExtra['department'] ?> </td>
+                            <td style="width: 50%;"> Date of Appointment at NTU: <?= @$fetchUserExtra['ntu'] ?>
                             </td>
 
                         </tr>
 
                         <tr>
-                            <td>Total Post PhD Experience: __________ </td>
+                            <td>Total Post PhD Experience: <?= @$fetchUserExtra['phd_experience'] ?> </td>
                         </tr>
 
                         <tr>
-                            <td>Total service on TTS: ___________ </td>
+                            <td>Total service on TTS: <?= @$fetchUserExtra['tts_service'] ?> </td>
                         </tr>
 
                         <tr>
-                            <td>Total service as Assistant Professor: __________</td>
+                            <td>Total service as Assistant Professor: <?= @$fetchUserExtra['assistant_professor'] ?></td>
                         </tr>
 
                         <tr>
-                            <td style="width: 31%;">Mid Term review (if applicable): _____________ </td>
+                            <td style="width: 31%;">Mid Term review (if applicable): <?= @$fetchUserExtra['mid_term_review'] ?> </td>
                         </tr>
 
                         <tr>
-                            <td>Postal Address:_________________ </td>
+                            <td>Postal Address: <?= @$fetchUser['user_address'] ?> </td>
                         </tr>
                         <tr>
-                            <td>Permanent Address: <br>
-                                <p style="position: absolute;top: 146.5%;left: 28%;">__________________________________________________</p>
+                            <td>Permanent Address: <?= @$fetchUser['user_address'] ?>
                             </td>
                         </tr>
 
                         <tr>
-                            <td>Email: ______________________ </td>
-                            <td>Telephone (Res/office). Cell no. _____________________________
+                            <td>Email: <?= @$fetchUser['user_email'] ?> </td>
+                            <td>Telephone (Res/office). Cell no. <?= @$fetchUser['user_phone'] ?>
                             </td>
                         </tr>
                     </table>

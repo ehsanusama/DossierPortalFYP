@@ -118,12 +118,26 @@ if (!empty($_REQUEST['action'])) {
     }
     /* Update User Profile */ elseif ($_REQUEST['action'] == 'update_user_profile') {
         $fetchUser['user_id'] = (!empty($fetchUser['user_id'])) ? $fetchUser['user_id'] : $_REQUEST['user_id'];
+        $user_extra = [
+            'age' => $_REQUEST['age'],
+            'domicile' => $_REQUEST['domicile'],
+            'cnic' => $_REQUEST['cnic'],
+            'tts_service' => $_REQUEST['tts_service'],
+            'assistant_professor' => $_REQUEST['assistant_professor'],
+            'mid_term_review' => $_REQUEST['mid_term_review'],
+            'department' => $_REQUEST['department'],
+            'phd_experience' => $_REQUEST['phd_experience'],
+            'ntu' => $_REQUEST['ntu'],
+            'nationality' => $_REQUEST['nationality']
+        ];
         @$data = [
             'user_first_name' => $_REQUEST['user_first_name'],
             'user_last_name' => $_REQUEST['user_last_name'],
             'user_phone' => $_REQUEST['user_phone'],
             'user_address' => $_REQUEST['user_address'],
             'user_dob' => $_REQUEST['user_dob'],
+            'designation' => $_REQUEST['designation'],
+            'user_extra' => json_encode($user_extra)
         ];
         if (update_data($dbc, "users", $data, "user_id", $fetchUser['user_id'])) {
             $response = [
@@ -742,11 +756,11 @@ if (!empty($_REQUEST['action'])) {
                 'user_id' => $fetchUser['user_id']
             ];
             $cdata = [
-                'cdegree' => $_REQUEST['cdegree'][$i],
-                'cresearch' => $_REQUEST['cresearch'][$i],
-                'cuniversity' => $_REQUEST['cuniversity'][$i],
-                'cmajor_field' => $_REQUEST['cmajor_field'][$i],
-                'user_id' => $fetchUser['user_id']
+                'cdegree' => @$_REQUEST['cdegree'][$i],
+                'cresearch' => @$_REQUEST['cresearch'][$i],
+                'cuniversity' => @$_REQUEST['cuniversity'][$i],
+                'cmajor_field' => @$_REQUEST['cmajor_field'][$i],
+                'user_id' => @$fetchUser['user_id']
             ];
             if (insert_data($dbc, "academic_qualification", $data)) {
                 insert_data($dbc, "certifications ", $cdata);

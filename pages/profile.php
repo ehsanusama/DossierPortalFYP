@@ -13,7 +13,8 @@
 			<input type="hidden" name="action" value="update_user_profile">
 
 			<div class="row">
-
+				<?php @$fetchUserExtra = (array) json_decode($fetchUser['user_extra']);
+				?>
 				<div class="col-sm-12">
 
 					<div class="panel panel-default panel-body">
@@ -45,6 +46,182 @@
 							</div><!-- col -->
 
 						</div><!-- row -->
+						<div class="row">
+
+							<div class="col-sm-6">
+
+								<div class="form-group">
+
+									<label for="">DOB</label>
+
+									<input type="date" name="user_dob" value="<?= @$fetchUser['user_dob'] ?>" class="form-control">
+
+								</div><!-- group -->
+
+							</div><!-- col -->
+
+							<div class="col-sm-6">
+
+								<div class="form-group">
+
+									<label for="">Age</label>
+									<input type="text" name="age" value="<?= @$fetchUserExtra['age'] ?>" class="form-control">
+
+								</div><!-- group -->
+
+							</div><!-- col -->
+
+						</div><!-- row -->
+						<div class="row">
+
+							<div class="col-sm-6">
+
+								<div class="form-group">
+
+									<label for="">Domicile</label>
+
+									<input type="text" name="domicile" value="<?= @$fetchUserExtra['domicile'] ?>" class="form-control">
+
+								</div><!-- group -->
+
+							</div><!-- col -->
+
+							<div class="col-sm-6">
+
+								<div class="form-group">
+
+									<label for="">CNIC</label>
+									<input type="text" name="cnic" value="<?= @$fetchUserExtra['cnic'] ?>" class="form-control">
+
+								</div><!-- group -->
+
+							</div><!-- col -->
+
+						</div><!-- row -->
+						<div class="row">
+
+							<div class="col-sm-6">
+
+								<div class="form-group">
+
+									<label for="">Designation</label>
+
+									<input type="text" name="designation" value="<?= @$fetchUser['designation'] ?>" class="form-control">
+
+								</div><!-- group -->
+
+							</div><!-- col -->
+
+							<div class="col-sm-6">
+
+								<div class="form-group">
+
+									<label for="">Department</label>
+									<input type="text" name="department" value="<?= @$fetchUserExtra['department'] ?>" class="form-control">
+
+								</div><!-- group -->
+
+							</div><!-- col -->
+
+						</div><!-- row -->
+						<div class="row">
+
+							<div class="col-sm-6">
+
+								<div class="form-group">
+
+									<label for="">Total Post PhD Experience</label>
+
+									<input type="text" name="phd_experience" value="<?= @$fetchUserExtra['phd_experience'] ?>" class="form-control">
+
+								</div><!-- group -->
+
+							</div><!-- col -->
+
+							<div class="col-sm-6">
+
+								<div class="form-group">
+
+									<label for="">Total service on TTS</label>
+									<input type="text" name="tts_service" value="<?= @$fetchUserExtra['tts_service'] ?>" class="form-control">
+
+								</div><!-- group -->
+
+							</div><!-- col -->
+
+						</div><!-- row -->
+						<div class="row">
+
+							<div class="col-sm-6">
+
+								<div class="form-group">
+
+									<label for="">Date Of Appointment At NTU:</label>
+
+									<input type="text" name="ntu" value="<?= @$fetchUserExtra['ntu'] ?>" class="form-control">
+
+								</div><!-- group -->
+
+							</div><!-- col -->
+
+							<div class="col-sm-6">
+
+								<div class="form-group">
+
+									<label for="">Nationality</label>
+									<input type="text" name="nationality" value="<?= @$fetchUserExtra['nationality'] ?>" class="form-control">
+
+								</div><!-- group -->
+
+							</div><!-- col -->
+
+						</div><!-- row -->
+						<div class="row">
+
+							<div class="col-sm-6">
+
+								<div class="form-group">
+
+									<label for="">Total service as Assistant Professor</label>
+
+									<input type="text" name="assistant_professor" value="<?= @$fetchUserExtra['assistant_professor'] ?>" class="form-control">
+
+								</div><!-- group -->
+
+							</div><!-- col -->
+
+							<div class="col-sm-6">
+
+								<div class="form-group">
+
+									<label for="">Mid Term review (if applicable)</label>
+									<input type="text" name="mid_term_review" value="<?= @$fetchUserExtra['mid_term_review'] ?>" class="form-control">
+
+								</div><!-- group -->
+
+							</div><!-- col -->
+
+						</div><!-- row -->
+						<div class="row">
+
+							<div class="col-sm-12">
+
+								<div class="form-group">
+
+									<label for="">Address</label>
+
+									<input type="text" name="user_address" value="<?= @$fetchUser['user_address'] ?>" class="form-control">
+
+								</div><!-- group -->
+
+							</div><!-- col -->
+
+
+
+						</div><!-- row -->
+
+
+
 
 					</div><!-- panel -->
 
