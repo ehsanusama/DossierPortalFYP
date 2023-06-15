@@ -319,7 +319,7 @@ function upload_file($file, $url)
 		# code...
 		$sts = "info";
 		$msg = "Please Choose a File Before Clicking";
-	} elseif ($size > 500000) {
+	} elseif ($size > 5000000) {
 		$sts = "info";
 		$msg = "Not Allowed more than 5 MB file size";
 		unlink($temp_name);

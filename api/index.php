@@ -605,11 +605,15 @@ if (!empty($_REQUEST['action'])) {
                 'research_domain_text' => $_REQUEST['research_domain_text'][$i],
                 'research_domain_details' => $_REQUEST['research_domain_details'][$i],
             ];
-            if (@$_FILES['f']['tmp_name'][$i]) {
-                upload_file($_FILES['f'][$i], "../img/staff/");
-                $research_domain_details['document'][$i] = $_SESSION['file_name'];
+            print_r($_FILES);
+            exit;
+            if (@$_FILES['f'][$i]['tmp_name']) {
+                upload_file($_FILES['f'], "../img/uploads/");
+                $research_domain_details['document'] = $_SESSION['file_name'];
             }
         }
+        print_r($research_domain_details);
+        exit;
         $data = [
             'research_domain_title' => $_REQUEST['research_domain_title'],
             'user_id' => $fetchUser['user_id'],
@@ -639,6 +643,7 @@ if (!empty($_REQUEST['action'])) {
                 'research_domain_details' => $_REQUEST['research_domain_details'][$i],
             ];
         }
+
         $data = [
             'academic_domain_title' => $_REQUEST['academic_domain_title'],
             'user_id' => $fetchUser['user_id'],
@@ -768,8 +773,8 @@ if (!empty($_REQUEST['action'])) {
             'user_id' => $fetchUser['user_id']
         ];
         if (@$_FILES['f']['tmp_name']) {
-            upload_pic($_FILES['f'], "../img/uploads/");
-            $data['file'] = $_SESSION['pic_name'];
+            upload_file($_FILES['f'], "../img/uploads/");
+            $data['file'] = $_SESSION['file_name'];
         }
         if (insert_data($dbc, "professional_experience", $data)) {
             $response = [

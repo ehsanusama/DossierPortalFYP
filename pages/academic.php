@@ -33,11 +33,7 @@
                                 </select>
                                 <br>
                             </div>
-                            <div class="col-md-6">
-                                <label for="">Add New Title</label>
-                                <input type="text" name="academic_domain_title" class="form-control">
-                                <br>
-                            </div>
+
                             <table class="table">
                                 <tr>
                                     <th colspan="5" class="text-center">Textile Engineering, knitting </th>

@@ -833,7 +833,7 @@
 			},
 			jsPDF: {
 				orientation: 'l',
-				unit: 'pc',
+				unit: 'px',
 				format: 'a4',
 				putOnlyUsedFonts: true,
 				floatPrecision: 16

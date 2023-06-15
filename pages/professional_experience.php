@@ -29,7 +29,7 @@
                                     <td colspan="2"><input type="text" class="form-control " name="duties"></td>
                                     <td colspan="1"><input type="text" class="form-control " name="from"></td>
                                     <td colspan="1"><input type="text" class="form-control " name="to"></td>
-                                    <td colspan="1"><input type="file" id="img" class="center-block" onchange="uploadImage(this)" data-target="#aImgShow" name="f">
+                                    <td colspan="1"><input type="file" id="img" class="center-block" name="f">
 
                                 </tr>
                             </table>

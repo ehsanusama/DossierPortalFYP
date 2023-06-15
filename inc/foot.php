@@ -68,6 +68,7 @@
    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
    <script src="portal_assets/custom/dt.js"></script>
    <script src="https://cdn.tiny.cloud/1/8u8dkofs3nnaqkrz355oro8m8qrfsjik8ptbjj51marf2i1n/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
    <script src="js/html2canvas.js"></script>
    <script>
      tinymce.init({
