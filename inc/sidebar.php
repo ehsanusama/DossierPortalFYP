@@ -108,7 +108,7 @@
             <li class="nav-item">
                 <a href="index.php?nav=<?= base64_encode('profile') ?>&business=<?= @$_SESSION['business'] ?>" class="nav-link">
                     <i class="fa fa-cog"></i>
-                    <span class="title">
+                    <span class="title" style="">
                         Account Settings
                     </span>
                 </a>
