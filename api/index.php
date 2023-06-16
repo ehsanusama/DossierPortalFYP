@@ -929,8 +929,8 @@ if (!empty($_REQUEST['action'])) {
             'user_id' => $fetchUser['user_id']
         ];
         if (@$_FILES['f']['tmp_name']) {
-            upload_pic($_FILES['f'], "../img/uploads/");
-            $data['document'] = $_SESSION['pic_name'];
+            upload_file($_FILES['f'], "../img/uploads/");
+            $data['document'] = $_SESSION['file_name'];
         }
         if (insert_data($dbc, "taught_course_details", $data)) {
             $response = [
@@ -997,8 +997,8 @@ if (!empty($_REQUEST['action'])) {
             'user_id' => $fetchUser['user_id']
         ];
         if (@$_FILES['f']['tmp_name']) {
-            upload_pic($_FILES['f'], "../img/uploads/");
-            $data['file'] = $_SESSION['pic_name'];
+            upload_file($_FILES['f'], "../img/uploads/");
+            $data['file'] = $_SESSION['file_name'];
         }
         if (empty($_REQUEST['id'])) {
             if (insert_data($dbc, "traning_conducted", $data)) {

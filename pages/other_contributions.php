@@ -95,7 +95,6 @@
                                             <tr>
                                                 <td style="width: 50%;"><?= @$value['research_domain_text'] ?></td>
                                                 <td style="width: 50%;"><?= @$value['research_domain_details'] ?></td>
-                                                <td style="width: 50%;"><?= $value['file'] ?></td>
                                             </tr>
                                     <?php endforeach;
                                     endwhile;

@@ -624,12 +624,45 @@
                 <div class="container">
                     <h3>Annexure 1:</h4>
                         <h4>Administrative / Non-academic departmental duties</h4>
+                        <?php
+                        $sql = "SELECT * FROM other_contributions WHERE user_id = $fetchUser[user_id]";
+                        $q = mysqli_query($dbc, $sql);
+                        while ($row = mysqli_fetch_assoc($q)) :
+                            $data1 = json_decode($row['contributions_domain_data']);
+                            foreach ($data1 as $key => $value) {
+                                if ($key === 'file') {
+                                    foreach ($value as $document) {
+                                        $containerPath = "img/uploads/";
+                                        $file = $containerPath . $document;
+                                        $pdfFilePath = $file;
+                                        // Generate the HTML code for embedding the PDF
+                                        $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%;height:1122px" scrolling="off" ></iframe>';
+                                        // Output the HTML code
+                                        echo $html;
+                                    }
+                                }
+                            }
+                        endwhile;
+                        ?>
                 </div>
                 <!-----------------Annexure 2:--------------------->
 
                 <div class="container">
                     <h3>Annexure 2:</h4>
                         <h4>Academic Qualification</h4>
+                        <?php
+                        $sql = "SELECT * FROM academic_qualification WHERE user_id = $fetchUser[user_id]";
+                        $q = mysqli_query($dbc, $sql);
+                        while ($row = mysqli_fetch_assoc($q)) :
+                            $containerPath = "img/uploads/";
+                            $file = $containerPath . $row['file'];
+                            $pdfFilePath = $file;
+                            // Generate the HTML code for embedding the PDF
+                            $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%;height:1122px" scrolling="off" ></iframe>';
+                            // Output the HTML code
+                            echo $html;
+                        endwhile;
+                        ?>
                 </div>
                 <!-----------------Annexure 3:--------------------->
 
@@ -662,10 +695,13 @@
                         $sql = "SELECT * FROM taught_course_details WHERE user_id = $fetchUser[user_id]";
                         $professional_experience_q = mysqli_query($dbc, $sql);
                         while ($row = mysqli_fetch_assoc($professional_experience_q)) :
-
-                        ?>
-                            <img src="img/uploads/<?= $row['document'] ?>" alt=""> <br><br>
-                        <?php
+                            $containerPath = "img/uploads/";
+                            $file = $containerPath . $row['document'];
+                            $pdfFilePath = $file;
+                            // Generate the HTML code for embedding the PDF
+                            $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:2700px" scrolling="off" ></iframe>';
+                            // Output the HTML code
+                            echo $html;
                         endwhile;
                         ?>
 
@@ -679,9 +715,14 @@
                         $sql = "SELECT * FROM traning_conducted WHERE user_id = $fetchUser[user_id]";
                         $professional_experience_q = mysqli_query($dbc, $sql);
                         while ($row = mysqli_fetch_assoc($professional_experience_q)) :
-                        ?>
-                            <img src="img/uploads/<?= $row['file'] ?>" alt=""> <br><br>
-                        <?php
+                            $containerPath = "img/uploads/";
+                            $file = $containerPath . $row['file'];
+                            $pdfFilePath = $file;
+                            // Generate the HTML code for embedding the PDF
+                            $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:2700px" scrolling="off" ></iframe>';
+                            // Output the HTML code
+                            echo $html;
+
                         endwhile;
                         ?>
 

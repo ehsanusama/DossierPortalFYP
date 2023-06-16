@@ -22,7 +22,7 @@
                                 </tr>
                                 <tr class="product-row">
                                     <td colspan="6"><textarea type="text" class="form-control" name="details"></textarea></td>
-                                    <td colspan="1"><input type="file" id="img" class="center-block" onchange="uploadImage(this)" data-target="#aImgShow" name="f">
+                                    <td colspan="1"><input type="file" id="img" name="f">
 
                                 </tr>
                             </table>

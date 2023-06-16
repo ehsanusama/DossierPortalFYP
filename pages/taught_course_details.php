@@ -29,7 +29,7 @@
                                     <td colspan="2"><input type="text" class="form-control " name="teaching_hour"></td>
                                     <td colspan="2"><input type="text" class="form-control " name="phd_ms_bs"></td>
                                     <td colspan="2"><input type="text" class="form-control " name="year"></td>
-                                    <td colspan="1"><input type="file" id="img" class="center-block" onchange="uploadImage(this)" data-target="#aImgShow" name="f">
+                                    <td colspan="1"><input type="file" id="img" class="center-block" name="f">
 </td>
 
 
