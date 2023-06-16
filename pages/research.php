@@ -68,7 +68,7 @@
                                         <input type="text" class="form-control" name="research_domain_text[]"></input>
                                     </td>
                                     <td colspan="2"><input type="text" class="form-control " name="research_domain_details[]"></td>
-                                    <td colspan="1"><input type="file" name="f[]" class="form-control" id="img" style="width: 150px;" multiple></td>
+                                    <td colspan="1"><input type="file" name="f[]" class="form-control" id="img" style="width: 150px;"></td>
                                     <td><button type="button" class="btn btn-success btn-sm addProductRowBtnLab"><span class="fa fa-plus"></span></button></td>
                                 </tr>
                             </table>

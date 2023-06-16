@@ -8,14 +8,14 @@
         <h2 class=''>(1.4) Other contributions</h2>
     </div>
     <div class='portlet-body'>
-        <form action="api/index.php" method="post" class="ajax-form">
+        <form action="api/index.php" method="post" class="ajax-form-with-file" enctype="multipart/form-data">
             <input type="hidden" name="action" value="other_contributions">
             <div class="row">
 
                 <div class="col-sm-12">
                     <div class="bg-dar w-100 p-2 mt-5 ">
                         <?php
-                        
+
                         ?>
 
                     </div>
@@ -48,7 +48,7 @@
                                         <input type="text" class="form-control" name="research_domain_text[]"></input>
                                     </td>
                                     <td colspan="2"><input type="text" class="form-control " name="research_domain_details[]"></td>
-                                    <td colspan="1"><input type="file" name="f[]" class="form-control" id="" style="width: 150px;"></td>
+                                    <td colspan="1"><input type="file" name="f[]" class="form-control" id="img" style="width: 150px;"></td>
                                     <td><button type="button" class="btn btn-success btn-sm addProductRowBtnLab"><span class="fa fa-plus"></span></button></td>
                                 </tr>
                             </table>
@@ -93,8 +93,9 @@
                                             $value = (array) $value;
                                     ?>
                                             <tr>
-                                                <td style="width: 50%;"><?= $value['research_domain_text'] ?></td>
-                                                <td style="width: 50%;"><?= $value['research_domain_details'] ?></td>
+                                                <td style="width: 50%;"><?= @$value['research_domain_text'] ?></td>
+                                                <td style="width: 50%;"><?= @$value['research_domain_details'] ?></td>
+                                                <td style="width: 50%;"><?= $value['file'] ?></td>
                                             </tr>
                                     <?php endforeach;
                                     endwhile;

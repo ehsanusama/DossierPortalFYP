@@ -285,8 +285,8 @@
                                                         $value = (array) $value;
                                                 ?>
                                                         <tr>
-                                                            <td style="width: 50%;"><?= $value['research_domain_text'] ?></td>
-                                                            <td style="width: 50%;"><?= $value['research_domain_details'] ?></td>
+                                                            <td style="width: 50%;"><?= @$value['research_domain_text'] ?></td>
+                                                            <td style="width: 50%;"><?= @$value['research_domain_details'] ?></td>
                                                         </tr>
                                                 <?php endforeach;
                                                 endwhile;
@@ -326,8 +326,8 @@
                                                         $value = (array) $value;
                                                 ?>
                                                         <tr>
-                                                            <td style="width: 50%;"><?= $value['research_domain_text'] ?></td>
-                                                            <td style="width: 50%;"><?= $value['research_domain_details'] ?></td>
+                                                            <td style="width: 50%;"><?= @$value['research_domain_text'] ?></td>
+                                                            <td style="width: 50%;"><?= @$value['research_domain_details'] ?></td>
                                                         </tr>
                                                 <?php endforeach;
                                                 endwhile;
@@ -369,8 +369,8 @@
                                                         $value = (array) $value;
                                                 ?>
                                                         <tr>
-                                                            <td style="width: 50%;"><?= $value['research_domain_text'] ?></td>
-                                                            <td style="width: 50%;"><?= $value['research_domain_details'] ?></td>
+                                                            <td style="width: 50%;"><?= @$value['research_domain_text'] ?></td>
+                                                            <td style="width: 50%;"><?= @$value['research_domain_details'] ?></td>
                                                         </tr>
                                                 <?php endforeach;
                                                 endwhile;
@@ -464,11 +464,11 @@
                                 while ($row = mysqli_fetch_assoc($professional_experience_q)) :
                                 ?>
                                     <tr>
-                                        <td><?= $row['institute'] ?></td>
-                                        <td><?= $row['position'] ?></td>
-                                        <td><?= $row['duties'] ?></td>
-                                        <td><?= $row['year_from'] ?></td>
-                                        <td><?= $row['year_to'] ?></td>
+                                        <td><?= @$row['institute'] ?></td>
+                                        <td><?= @$row['position'] ?></td>
+                                        <td><?= @$row['duties'] ?></td>
+                                        <td><?= @$row['year_from'] ?></td>
+                                        <td><?= @$row['year_to'] ?></td>
                                     </tr>
 
                                 <?php
@@ -506,10 +506,10 @@
                                 while ($row = mysqli_fetch_assoc($q)) :
                                 ?>
                                     <tr>
-                                        <td><?= $row['title'] ?></td>
-                                        <td><?= $row['credit_hour'] ?></td>
-                                        <td><?= $row['teaching_hour'] ?></td>
-                                        <td><?= $row['phd_ms_bs'] ?></td>
+                                        <td><?= @$row['title'] ?></td>
+                                        <td><?= @$row['credit_hour'] ?></td>
+                                        <td><?= @$row['teaching_hour'] ?></td>
+                                        <td><?= @$row['phd_ms_bs'] ?></td>
                                     </tr>
 
                                 <?php
@@ -539,9 +539,9 @@
                                 while ($row = mysqli_fetch_assoc($q)) :
                                 ?>
                                     <tr>
-                                        <td><?= $row['title'] ?></td>
-                                        <td><?= $row['credit_hour'] ?></td>
-                                        <td><?= $row['phd_ms_bs'] ?></td>
+                                        <td><?= @$row['title'] ?></td>
+                                        <td><?= @$row['credit_hour'] ?></td>
+                                        <td><?= @$row['phd_ms_bs'] ?></td>
                                     </tr>
 
                                 <?php
@@ -573,11 +573,11 @@
                                 while ($row = mysqli_fetch_assoc($q)) :
                                 ?>
                                     <tr>
-                                        <td><?= $row['institute'] ?></td>
-                                        <td><?= $row['position'] ?></td>
-                                        <td><?= $row['duties'] ?></td>
-                                        <td><?= $row['year_from'] ?></td>
-                                        <td><?= $row['year_to'] ?></td>
+                                        <td><?= @$row['institute'] ?></td>
+                                        <td><?= @$row['position'] ?></td>
+                                        <td><?= @$row['duties'] ?></td>
+                                        <td><?= @$row['year_from'] ?></td>
+                                        <td><?= @$row['year_to'] ?></td>
                                     </tr>
 
                                 <?php
@@ -662,6 +662,7 @@
                         $sql = "SELECT * FROM taught_course_details WHERE user_id = $fetchUser[user_id]";
                         $professional_experience_q = mysqli_query($dbc, $sql);
                         while ($row = mysqli_fetch_assoc($professional_experience_q)) :
+
                         ?>
                             <img src="img/uploads/<?= $row['document'] ?>" alt=""> <br><br>
                         <?php

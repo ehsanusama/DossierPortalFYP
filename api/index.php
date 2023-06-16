@@ -619,15 +619,20 @@ if (!empty($_REQUEST['action'])) {
                 'research_domain_text' => $_REQUEST['research_domain_text'][$i],
                 'research_domain_details' => $_REQUEST['research_domain_details'][$i],
             ];
-            print_r($_FILES);
-            exit;
-            if (@$_FILES['f'][$i]['tmp_name']) {
-                upload_file($_FILES['f'], "../img/uploads/");
-                $research_domain_details['document'] = $_SESSION['file_name'];
+
+            if (@$_FILES['f']['tmp_name'][$i]) {
+                $file_array = [
+                    'name' => $_FILES['f']['name'][$i],
+                    'tmp_name' => $_FILES['f']['tmp_name'][$i],
+                    'error' => $_FILES['f']['error'][$i],
+                    'size' => $_FILES['f']['size'][$i],
+                    'type' => $_FILES['f']['type'][$i],
+                ];
+                upload_file($file_array, "../img/uploads/");
+                $research_domain_details['document'][$i] = $_SESSION['file_name'];
             }
         }
-        print_r($research_domain_details);
-        exit;
+
         $data = [
             'research_domain_title' => $_REQUEST['research_domain_title'],
             'user_id' => $fetchUser['user_id'],
@@ -656,6 +661,17 @@ if (!empty($_REQUEST['action'])) {
                 'research_domain_text' => $_REQUEST['research_domain_text'][$i],
                 'research_domain_details' => $_REQUEST['research_domain_details'][$i],
             ];
+            if (@$_FILES['f']['tmp_name'][$i]) {
+                $file_array = [
+                    'name' => $_FILES['f']['name'][$i],
+                    'tmp_name' => $_FILES['f']['tmp_name'][$i],
+                    'error' => $_FILES['f']['error'][$i],
+                    'size' => $_FILES['f']['size'][$i],
+                    'type' => $_FILES['f']['type'][$i],
+                ];
+                upload_file($file_array, "../img/uploads/");
+                $research_domain_details['file'][$i] = $_SESSION['file_name'];
+            }
         }
 
         $data = [
@@ -686,6 +702,17 @@ if (!empty($_REQUEST['action'])) {
                 'research_domain_text' => $_REQUEST['research_domain_text'][$i],
                 'research_domain_details' => $_REQUEST['research_domain_details'][$i],
             ];
+            if (@$_FILES['f']['tmp_name'][$i]) {
+                $file_array = [
+                    'name' => $_FILES['f']['name'][$i],
+                    'tmp_name' => $_FILES['f']['tmp_name'][$i],
+                    'error' => $_FILES['f']['error'][$i],
+                    'size' => $_FILES['f']['size'][$i],
+                    'type' => $_FILES['f']['type'][$i],
+                ];
+                upload_file($file_array, "../img/uploads/");
+                $research_domain_details['file'][$i] = $_SESSION['file_name'];
+            }
         }
         $data = [
             'contributions_domain_title' => $_REQUEST['contributions_domain_title'],
@@ -755,12 +782,24 @@ if (!empty($_REQUEST['action'])) {
                 'major_field' => $_REQUEST['major_field'][$i],
                 'user_id' => $fetchUser['user_id']
             ];
+            if (@$_FILES['f']['tmp_name'][$i]) {
+                $file_array = [
+                    'name' => $_FILES['f']['name'][$i],
+                    'tmp_name' => $_FILES['f']['tmp_name'][$i],
+                    'error' => $_FILES['f']['error'][$i],
+                    'size' => $_FILES['f']['size'][$i],
+                    'type' => $_FILES['f']['type'][$i],
+                ];
+                upload_file($file_array, "../img/uploads/");
+                $data['file'][$i] = $_SESSION['file_name'];
+                $data = array_merge($data, array('file' => $data['file'][$i]));
+            }
             $cdata = [
                 'cdegree' => @$_REQUEST['cdegree'][$i],
                 'cresearch' => @$_REQUEST['cresearch'][$i],
                 'cuniversity' => @$_REQUEST['cuniversity'][$i],
                 'cmajor_field' => @$_REQUEST['cmajor_field'][$i],
-                'user_id' => @$fetchUser['user_id']
+                'user_id' => @$fetchUser['user_id'],
             ];
             if (insert_data($dbc, "academic_qualification", $data)) {
                 insert_data($dbc, "certifications ", $cdata);
@@ -777,7 +816,45 @@ if (!empty($_REQUEST['action'])) {
                 ];
             }
         }
-    } /*professional_experience*/ elseif ($_REQUEST['action'] == "professional_experience") {
+    } elseif ($_REQUEST['action'] == "certifications") {
+        for ($i = 0; $i < count($_REQUEST['degree']); $i++) {
+            $data = [
+                'cdegree' => $_REQUEST['degree'][$i],
+                'cresearch' => $_REQUEST['research'][$i],
+                'cuniversity' => $_REQUEST['university'][$i],
+                'cmajor_field' => $_REQUEST['major_field'][$i],
+                'user_id' => $fetchUser['user_id']
+            ];
+            if (@$_FILES['f']['tmp_name'][$i]) {
+                $file_array = [
+                    'name' => $_FILES['f']['name'][$i],
+                    'tmp_name' => $_FILES['f']['tmp_name'][$i],
+                    'error' => $_FILES['f']['error'][$i],
+                    'size' => $_FILES['f']['size'][$i],
+                    'type' => $_FILES['f']['type'][$i],
+                ];
+                upload_file($file_array, "../img/uploads/");
+                $data['file'][$i] = $_SESSION['file_name'];
+                $data = array_merge($data, array('file' => $data['file'][$i]));
+            }
+
+            if (insert_data($dbc, "certifications", $data)) {
+                $response = [
+                    "msg" => "Academic certifications Add Successfully",
+                    "sts" => "success",
+                    "action" => $_REQUEST['action']
+                ];
+            } else {
+                $response = [
+                    "msg" => mysqli_error($dbc),
+                    "sts" => "danger",
+                    "action" => $_REQUEST['action']
+                ];
+            }
+        }
+    }
+
+    /*professional_experience*/ elseif ($_REQUEST['action'] == "professional_experience") {
         $data = [
             'institute' => $_REQUEST['institute'],
             'position' => $_REQUEST['position'],

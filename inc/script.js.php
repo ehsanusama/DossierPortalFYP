@@ -122,7 +122,7 @@
 	})
 
 	$(function() {
-		var response_module = ["login", "forgot_password_module", "register_module", "executive_summary", 'register_staff_module', 'research_data', 'academic_data', 'other_contributions', 'professional_experience', 'taught_course_details', 'traning_conducted'];
+		var response_module = ["login", "forgot_password_module", "register_module", "executive_summary", 'register_staff_module', 'research_data', 'academic_data', 'other_contributions', 'professional_experience', 'taught_course_details', 'traning_conducted', 'academic_qualification', 'certifications'];
 		$(document).on('submit', '.ajax-form', function() {
 			var form = $(this);
 
@@ -206,7 +206,7 @@
 								window.location = 'index.php'
 							}, 1500)
 						}
-						if ((json.action == "register_staff_module" || json.action == "professional_experience" || json.action == "taught_course_details" || json.action == "traning_conducted") && json.sts == "success") {
+						if ((json.action == "register_staff_module" || json.action == "professional_experience" || json.action == "taught_course_details" || json.action == "traning_conducted" || json.action == "academic_qualification" || json.action == "certifications" || json.action == "other_contributions") && json.sts == "success") {
 							setTimeout(function() {
 								$(".modal").modal('hide');
 								window.location = window.location.href;
@@ -853,7 +853,7 @@
 		}, function(response) {
 			var json = JSON.parse($.trim(response));
 			options = $.trim(json.products);
-			btn.closest('tr').after('<tr class="product-row"><td  colspan="2"> <input rows="3" class="form-control" name="research_domain_text[]"></input> </td>  <td colspan="2"><input type="text" class="form-control total"   name="research_domain_details[]"></td> <td><button type="button" class="btn btn-success btn-sm addProductRowBtnLab"><span class="fa fa-plus"></span></button><button type="button" class="btn btn-danger removeBtn btn-sm"><span class="fa fa-remove"></span></button></td> </tr>'); // $(this).closest('tr').find('.show_unshow').prop('checked', true);
+			btn.closest('tr').after('<tr class="product-row"><td  colspan="2"> <input rows="3" class="form-control" name="research_domain_text[]"></input> </td>  <td colspan="2"><input type="text" class="form-control total"   name="research_domain_details[]"></td><td colspan="1"><input type="file" name="f[]" class="form-control" id="img" style="width: 150px;"></td><td><button type="button" class="btn btn-success btn-sm addProductRowBtnLab"><span class="fa fa-plus"></span></button><button type="button" class="btn btn-danger removeBtn btn-sm"><span class="fa fa-remove"></span></button></td> </tr>'); // $(this).closest('tr').find('.show_unshow').prop('checked', true);
 			selectRefresh();
 		})
 	})
@@ -870,7 +870,7 @@
 		}, function(response) {
 			var json = JSON.parse($.trim(response));
 			options = $.trim(json.products);
-			btn.closest('tr').after('<tr class="product-row"><td colspan="2"><input type="text" class="form-control" name="degree[]"></input></td><td colspan="2"><input type="text" class="form-control " name="research[]"></td><td colspan="2"><input type="text" class="form-control " name="university[]"></td><td colspan="2"><input type="text" class="form-control " name="major_field[]"></td><td><button type="button" class="btn btn-success btn-sm addQualificationRowBtn"><span class="fa fa-plus"></span></button></button><button type="button" class="btn btn-danger QualificationremoveBtn btn-sm"><span class="fa fa-remove"></span></button></td</tr>'); // $(this).closest('tr').find('.show_unshow').prop('checked', true);
+			btn.closest('tr').after('<tr class="product-row"><td colspan="2"><input type="text" class="form-control" name="degree[]"></input></td><td colspan="2"><input type="text" class="form-control " name="research[]"></td><td colspan="2"><input type="text" class="form-control " name="university[]"></td><td colspan="2"><input type="text" class="form-control " name="major_field[]"></td><td colspan="1"><input type="file" name="f[]" class="form-control" id="img" style="width: 150px;"></td><td><button type="button" class="btn btn-success btn-sm addQualificationRowBtn"><span class="fa fa-plus"></span></button></button><button type="button" class="btn btn-danger QualificationremoveBtn btn-sm"><span class="fa fa-remove"></span></button></td</tr>'); // $(this).closest('tr').find('.show_unshow').prop('checked', true);
 			selectRefresh();
 		})
 	})

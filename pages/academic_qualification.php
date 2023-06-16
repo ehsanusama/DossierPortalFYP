@@ -8,7 +8,7 @@
         <h2 class=''>(3) Academic Qualification</h2>
     </div>
     <div class='portlet-body'>
-        <form action="api/index.php" method="post" class="ajax-form">
+        <form action="api/index.php" method="post" class="ajax-form-with-file" enctype="multipart/form-data">
             <input type="hidden" name="action" value="academic_qualification">
             <div class="row">
                 <div class="col-sm-12">
@@ -28,20 +28,33 @@
                                     <td colspan="2"><input type="text" class="form-control " name="research[]"></td>
                                     <td colspan="2"><input type="text" class="form-control " name="university[]"></td>
                                     <td colspan="2"><input type="text" class="form-control " name="major_field[]"></td>
+                                    <td colspan="1"><input type="file" name="f[]" class="form-control" id="img" style="width: 150px;"></td>
                                     <td><button type="button" class="btn btn-success btn-sm addQualificationRowBtn"><span class="fa fa-plus"></span></button></td>
                                 </tr>
                             </table>
                         </div><!-- row -->
                     </div><!-- panel -->
+                    <button class="btn btn-primary" type="submit">Save</button>
+
+                </div><!-- col -->
+            </div><!-- row -->
+        </form>
+    </div>
+    <div class='portlet-body'>
+        <form action="api/index.php" method="post" class="ajax-form-with-file" enctype="multipart/form-data">
+            <input type="hidden" name="action" value="certifications">
+            <div class="row">
+                <div class="col-sm-12">
                     <h4>Certifications</h4>
                     <div class="panel panel-default panel-body">
                         <div class="row">
                             <table class="table">
                                 <tr class="product-row">
-                                    <td colspan="2"><input type="text" class="form-control" name="cdegree[]"></input></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="cresearch[]"></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="cuniversity[]"></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="cmajor_field[]"></td>
+                                    <td colspan="2"><input type="text" class="form-control" name="degree[]"></input></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="research[]"></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="university[]"></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="major_field[]"></td>
+                                    <td colspan="1"><input type="file" name="f[]" class="form-control" id="img" style="width: 150px;"></td>
                                     <td><button type="button" class="btn btn-success btn-sm addQualificationRowBtn"><span class="fa fa-plus"></span></button></td>
                                 </tr>
                             </table>
@@ -53,7 +66,6 @@
             </div><!-- row -->
         </form>
     </div>
-
 
 </div>
 
