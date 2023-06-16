@@ -60,6 +60,8 @@
                         <th class="text-center">Duties </th>
                         <th class="text-center">From </th>
                         <th class="text-center">To </th>
+                        <th>Action</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -74,6 +76,8 @@
                             <td><?= $row['duties'] ?></td>
                             <td><?= $row['year_from'] ?></td>
                             <td><?= $row['year_to'] ?></td>
+                            <td> <a href="#" onclick="deleteData('professional_experience','id',<?= $row['user_id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+
                         </tr>
 
                     <?php

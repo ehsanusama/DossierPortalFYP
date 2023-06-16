@@ -1030,6 +1030,94 @@ if (!empty($_REQUEST['action'])) {
                 ];
             }
         }
+    }
+    /*journal_articles*/ elseif ($_REQUEST['action'] == "journal_articles") {
+        $data = [
+            'title' => $_REQUEST['title'],
+            'year' => $_REQUEST['year'],
+            'journal' => $_REQUEST['journal'],
+            'impact' => $_REQUEST['impact'],
+            'doi' => $_REQUEST['doi'],
+            'corresponding' => $_REQUEST['corresponding'],
+            'user_id' => $fetchUser['user_id']
+        ];
+        if (@$_FILES['f']['tmp_name']) {
+            upload_file($_FILES['f'], "../img/uploads/");
+            $data['file'] = $_SESSION['file_name'];
+        }
+        if (empty($_REQUEST['id'])) {
+            if (insert_data($dbc, "journal_articles", $data)) {
+                $response = [
+                    "msg" => "Record Added Successfully",
+                    "sts" => "success",
+                    "action" => $_REQUEST['action']
+                ];
+            } else {
+                $response = [
+                    "msg" => mysqli_error($dbc),
+                    "sts" => "danger",
+                    "action" => $_REQUEST['action']
+                ];
+            }
+            # code...
+        } else {
+            if (update_data($dbc, "journal_articles", $data, "id", $_REQUEST['id'])) {
+                $response = [
+                    "msg" => "Record Updated Successfully",
+                    "sts" => "success",
+                    "action" => $_REQUEST['action']
+                ];
+            } else {
+                $response = [
+                    "msg" => mysqli_error($dbc),
+                    "sts" => "danger",
+                    "action" => $_REQUEST['action']
+                ];
+            }
+        }
+    }
+    /*presented_conferences*/ elseif ($_REQUEST['action'] == "presented_conferences") {
+        $data = [
+            'author' => $_REQUEST['author'],
+            'title' => $_REQUEST['title'],
+            'held_at' => $_REQUEST['held_at'],
+            'conference_title' => $_REQUEST['conference_title'],
+            'user_id' => $fetchUser['user_id']
+        ];
+        if (@$_FILES['f']['tmp_name']) {
+            upload_file($_FILES['f'], "../img/uploads/");
+            $data['file'] = $_SESSION['file_name'];
+        }
+        if (empty($_REQUEST['id'])) {
+            if (insert_data($dbc, "presented_conferences", $data)) {
+                $response = [
+                    "msg" => "Record Added Successfully",
+                    "sts" => "success",
+                    "action" => $_REQUEST['action']
+                ];
+            } else {
+                $response = [
+                    "msg" => mysqli_error($dbc),
+                    "sts" => "danger",
+                    "action" => $_REQUEST['action']
+                ];
+            }
+            # code...
+        } else {
+            if (update_data($dbc, "presented_conferences", $data, "id", $_REQUEST['id'])) {
+                $response = [
+                    "msg" => "Record Updated Successfully",
+                    "sts" => "success",
+                    "action" => $_REQUEST['action']
+                ];
+            } else {
+                $response = [
+                    "msg" => mysqli_error($dbc),
+                    "sts" => "danger",
+                    "action" => $_REQUEST['action']
+                ];
+            }
+        }
     } else {
     }
 }/*Action not empty*/

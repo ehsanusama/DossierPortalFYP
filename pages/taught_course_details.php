@@ -30,7 +30,7 @@
                                     <td colspan="2"><input type="text" class="form-control " name="phd_ms_bs"></td>
                                     <td colspan="2"><input type="text" class="form-control " name="year"></td>
                                     <td colspan="1"><input type="file" id="img" class="center-block" name="f">
-</td>
+                                    </td>
 
 
                                 </tr>
@@ -61,6 +61,8 @@
                         <th class="text-center">Credit Hours </th>
                         <th class="text-center">Teaching Hours (since 20xx) </th>
                         <th class="text-center">PhD/MS/BS </th>
+                        <th>Action</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -74,6 +76,8 @@
                             <td><?= $row['credit_hour'] ?></td>
                             <td><?= $row['teaching_hour'] ?></td>
                             <td><?= $row['phd_ms_bs'] ?></td>
+                            <td> <a href="#" onclick="deleteData('taught_course_details','id',<?= $row['user_id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+
                         </tr>
 
                     <?php

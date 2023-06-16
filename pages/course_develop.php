@@ -61,6 +61,8 @@
                                     <th class="text-center">Course Title </th>
                                     <th class="text-center">Credit Hours </th>
                                     <th class="text-center">PhD/MS/BS </th>
+                                    <th>Action</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -73,6 +75,8 @@
                                         <td><?= $row['title'] ?></td>
                                         <td><?= $row['credit_hour'] ?></td>
                                         <td><?= $row['phd_ms_bs'] ?></td>
+                                        <td> <a href="#" onclick="deleteData('develop_course_details','id',<?= $row['user_id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+
                                     </tr>
 
                                 <?php

@@ -11,7 +11,7 @@
  </div>
  <!-- jQuery -->
  <div class="page-footer">
-   <div class="page-footer-inner"> 2020 &copy; Attendezz , Developed By CGit
+   <div class="page-footer-inner"> 2023 &copy; Dossier , Developed By NTU
      <a target="_blank" href=""></a> &nbsp;|&nbsp;
      <div class="scroll-to-top">
        <i class="icon-arrow-up"></i>

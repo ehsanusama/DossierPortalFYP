@@ -82,6 +82,8 @@
                         <th class="text-center">Research Thesis/ Project Title </th>
                         <th class="text-center">University </th>
                         <th class="text-center">Major Field/Subjects </th>
+                        <th>Action</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -95,6 +97,8 @@
                             <td><?= $row['research'] ?></td>
                             <td><?= $row['university'] ?></td>
                             <td><?= $row['major_field'] ?></td>
+                            <td> <a href="#" onclick="deleteData('academic_qualification','id',<?= $row['user_id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+
                         </tr>
 
                     <?php
@@ -113,6 +117,8 @@
                             <td><?= $crow['cresearch'] ?></td>
                             <td><?= $crow['cuniversity'] ?></td>
                             <td><?= $crow['cmajor_field'] ?></td>
+                            <td> <a href="#" onclick="deleteData('certifications','id',<?= $row['user_id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+
                         </tr>
 
                     <?php
