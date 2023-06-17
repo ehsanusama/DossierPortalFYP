@@ -978,6 +978,36 @@
                         ?>
 
                 </div>
+                <!-----------------Annexure 6:--------------------->
+
+                <div class="container">
+                    <h3>Annexure 6:</h4>
+                        <h4>(6.4) Funded Research Projects (in progress):</h4>
+
+                </div>
+                <!-----------------Annexure 7:--------------------->
+
+                <div class="container">
+                    <h3>Annexure 7:</h4>
+                        <h4>PhD Thesis completed (As Supervisor):</h4>
+
+                </div>
+                <div class="container">
+                    <h3>Annexure 8:</h4>
+                        <h4>PhD Thesis in progress (As Supervisor):</h4>
+                </div>
+                <div class="container">
+                    <h3>Annexure 9:</h4>
+                        <h4>MS Thesis in completed (As Supervisor):</h4>
+                </div>
+                <div class="container">
+                    <h3>Annexure 10:</h4>
+                        <h4>Reviewer of Research Article:</h4>
+                </div>
+                <div class="container">
+                    <h3>Annexure 11:</h4>
+                        <h4>Papers presented in Conferences:</h4>
+                </div>
             </div>
         </span>
     <?php endif; ?>
