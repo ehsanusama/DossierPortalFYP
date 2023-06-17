@@ -1,5 +1,4 @@
 <?php
-@$fetchBranchData = fetchRecord($dbc, "branch", "branch_id", $fetchUser['user_branch']);
 @$getRoleAdmin = mysqli_num_rows(mysqli_query($dbc, "SELECT * FROM assign_user_role WHERE LOWER(user_role)='administrator' AND user_id='$fetchUser[user_id]'"));
 @$getRoleEmployee = mysqli_num_rows(mysqli_query($dbc, "SELECT * FROM assign_user_role WHERE LOWER(user_role)='employee' AND user_id='$fetchUser[user_id]'"));
 @$global_business = base64_decode($_REQUEST['business']);

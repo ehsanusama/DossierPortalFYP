@@ -83,7 +83,7 @@
                         </div>
                     </div>
                     <h3 style="font-size: 25px;">Instructions:</h3>
-                    <ol type="i" style="padding: 0 71px;width:100%">
+                    <ol type="i" style="padding: 0 71px;width:71%">
                         <li>Submit the dossier in hard and soft copy to the HR section of Registrar office <a href="#" style="font-weight: 500;">(hrm@ntu.edu.pk)</a></li>
                         <li>Attach all necessary relevant documents.</li>
                         <li>Attach first page of published papers</li>
@@ -91,9 +91,10 @@
                         <li>Mention reporting year/period.</li>
                         <li>Faculty members submitting their dossier for consideration on fast track
                             promotion/appointment as per HEC criteria need to submit an application along
-                            with dossier. </li>
+                            with dossier.
+                        </li>
                     </ol>
-
+                    <img style="width: 182px;float: right;margin-top: -14%;" src="img/staff/<?= $fetchUser['user_pic'] ?>" alt="<?= $fetchUser['user_pic'] ?>">
                     <div class="container ctn2" style="display: flex; padding: 0;">
                         <div class="rp">
                             <p>Reporting period:</p>
@@ -125,8 +126,7 @@
 
                         <tr>
                             <td>DOB: <?= @$fetchUser['user_dob'] ?></td>
-                            <td style="width: 5%;"> Age: <?= @$fetchUserExtra['age'] ?> </td>
-                            <td style="position: absolute; left: 53%;">CNIC # <?= @$fetchUserExtra['cnic'] ?> </td>
+                            <td style="width: 5%;"> Age: <?= @$fetchUserExtra['age'] ?> CNIC# <?= @$fetchUserExtra['cnic'] ?> </td>
                         </tr>
                         <tr>
                             <td>Domicile: <?= @$fetchUserExtra['domicile'] ?></td>
@@ -613,6 +613,257 @@
                                     </tr>
 
                                 <?php
+                                endwhile;
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-------------------------------------->
+
+                <div class="container">
+                    <h2>(6) Research Profile</h2>
+                    <?php $rprofile = fetchRecord($dbc, "research_profile", 'user_id', $fetchUser['user_id']); ?>
+                    <?= @$rprofile['summary'] ?>
+                    <h3>(6.1) Research statement</h3>
+                    <?= @$rprofile['statement'] ?>
+                </div>
+                <!-------------------------------------->
+                <div class="container">
+                    <h3>(6.2) Research Out Put</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" colspan="3">Details </th>
+                                    <th class="text-center">Number </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $sql = "SELECT * FROM research_output WHERE user_id = $fetchUser[user_id]";
+                                $q = mysqli_query($dbc, $sql);
+                                while ($row = mysqli_fetch_assoc($q)) :
+                                ?>
+                                    <tr>
+                                        <td colspan="3"><?= $row['details'] ?></td>
+                                        <td><?= $row['number'] ?></td>
+                                    </tr>
+
+                                <?php
+                                endwhile;
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-------------------------------------->
+                <div class="container">
+                    <h3>(6.3) Books Chapters authored:</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Authors </th>
+                                    <th class="text-center">Chapter </th>
+                                    <th class="text-center">Year </th>
+                                    <th class="text-center">Book </th>
+                                    <th class="text-center">DOI</th>
+                                    <th class="text-center">Publisher</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $sql = "SELECT * FROM books_authored WHERE user_id = $fetchUser[user_id]";
+                                $q = mysqli_query($dbc, $sql);
+                                while ($row = mysqli_fetch_assoc($q)) :
+                                ?>
+                                    <tr>
+                                        <td><?= $row['authors'] ?></td>
+                                        <td><?= $row['chapter'] ?></td>
+                                        <td><?= $row['year'] ?></td>
+                                        <td><?= $row['book'] ?></td>
+                                        <td><?= $row['doi'] ?></td>
+                                        <td><?= $row['publisher'] ?></td>
+                                    </tr>
+
+                                <?php
+                                endwhile;
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-------------------------------------->
+                <div class="container">
+                    <h3>(6.4) Funded Research Projects (in progress):</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Project Title </th>
+                                    <th class="text-center">Principal/CoPrincipal Investigator </th>
+                                    <th class="text-center">Amount in millions (PKR) </th>
+                                    <th class="text-center"> Sponsoring Agency</th>
+                                    <th class="text-center"> Partner (Industry)</th>
+                                    <th class="text-center"> Duration </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $sql = "SELECT * FROM funded_research_projects WHERE user_id = $fetchUser[user_id] and status='inprogress'";
+                                $q = mysqli_query($dbc, $sql);
+                                while ($row = mysqli_fetch_assoc($q)) :
+                                ?>
+                                    <tr>
+                                        <td><?= $row['title'] ?></td>
+                                        <td><?= $row['investigator'] ?></td>
+                                        <td><?= $row['amount'] ?></td>
+                                        <td><?= $row['sponsor'] ?></td>
+                                        <td><?= $row['partner'] ?></td>
+                                        <td><?= $row['duration'] ?></td>
+                                    </tr>
+
+                                <?php
+                                endwhile;
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="container">
+                    <h3>(6.5) Funded Research Projects (completed):</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Project Title </th>
+                                    <th class="text-center">Principal/CoPrincipal Investigator </th>
+                                    <th class="text-center">Amount in millions (PKR) </th>
+                                    <th class="text-center"> Sponsoring Agency</th>
+                                    <th class="text-center"> Partner (Industry)</th>
+                                    <th class="text-center"> Duration </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $sql = "SELECT * FROM funded_research_projects WHERE user_id = $fetchUser[user_id] and status='completed'";
+                                $q = mysqli_query($dbc, $sql);
+                                while ($row = mysqli_fetch_assoc($q)) :
+                                ?>
+                                    <tr>
+                                        <td><?= $row['title'] ?></td>
+                                        <td><?= $row['investigator'] ?></td>
+                                        <td><?= $row['amount'] ?></td>
+                                        <td><?= $row['sponsor'] ?></td>
+                                        <td><?= $row['partner'] ?></td>
+                                        <td><?= $row['duration'] ?></td>
+                                    </tr>
+
+                                <?php
+                                endwhile;
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-------------------------------------->
+                <div class="container">
+                    <h3>(6.6) Patents:</h3>
+                </div>
+                <!-------------------------------------->
+                <div class="container">
+                    <h3>(6.7) Research Supervision:</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sr#</th>
+                                    <th class="text-center">Student’s Name </th>
+                                    <th class="text-center">Thesis Title</th>
+                                    <th class="text-center">Year </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <?php
+                                $class = ["Phd", "MS", "BS"];
+                                $role = ["Supervisor", "Co-Supervisor"];
+                                for ($i = 0; $i < count($class); $i++) :
+
+                                    for ($j = 0; $j < count($role); $j++) :
+                                        $sql = "SELECT * FROM research_supervision WHERE user_id = $fetchUser[user_id] and class = '$class[$i]' and role = '$role[$j]' ";
+                                        $q = mysqli_query($dbc, $sql);
+                                ?>
+                                        <tr>
+                                            <td colspan="6" class="text-left"><?= $class[$i] ?> Thesis completed (As <?= $role[$j] ?>) </td>
+                                        </tr>
+                                        <?php
+                                        $k = 1;
+                                        while ($row = mysqli_fetch_assoc($q)) :
+                                        ?>
+                                            <tr>
+                                                <td><?= $k  ?></td>
+                                                <td><?= @$row['name'] ?></td>
+                                                <td><?= @$row['title'] ?></td>
+                                                <td><?= @$row['year'] ?></td>
+                                            </tr>
+
+                                <?php
+                                            $k++;
+                                        endwhile;
+
+                                    endfor;
+
+                                endfor;
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-------------------------------------->
+                <div class="container">
+                    <h3>(6.8) Reviewer of research articles:</h3>
+                </div>
+                <!-------------------------------------->
+
+                <div class="container">
+                    <h3>(6.9) External Examiner/Referee of MS/PhD Thesis:</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sr#</th>
+                                    <th class="text-center">Student’s Name </th>
+                                    <th class="text-center">Degree </th>
+                                    <th>University</th>
+                                    <th class="text-center">Thesis Title</th>
+                                    <th class="text-center">Year </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <?php
+
+                                $sql = "SELECT * FROM external_examiner WHERE user_id = $fetchUser[user_id]";
+                                $q = mysqli_query($dbc, $sql);
+                                $k = 1;
+                                while ($row = mysqli_fetch_assoc($q)) :
+                                ?>
+                                    <tr>
+                                        <td><?= $k  ?></td>
+                                        <td><?= @$row['name'] ?></td>
+                                        <td><?= $row['class'] ?></td>
+                                        <td><?= @$row['uni'] ?></td>
+                                        <td><?= @$row['title'] ?></td>
+                                        <td><?= @$row['year'] ?></td>
+                                    </tr>
+
+                                <?php
+                                    $k++;
                                 endwhile;
                                 ?>
                             </tbody>

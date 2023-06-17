@@ -47,7 +47,7 @@
         <h4 class=''>(6.2) Research Out Put </h4>
     </div>
     <div class='portlet-body'>
-        <div class="">
+        <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
                     <tr>

@@ -125,7 +125,8 @@
 		var response_module = ["login", "forgot_password_module", "register_module", "executive_summary", 'register_staff_module',
 			'research_data', 'academic_data', 'other_contributions', 'professional_experience', 'taught_course_details',
 			'traning_conducted', 'academic_qualification', 'certifications', 'journal_articles', 'presented_conferences',
-			'research_profile', 'research_output', 'books_authored', 'funded_research_projects', 'research_supervision'
+			'research_profile', 'research_output', 'books_authored', 'funded_research_projects', 'research_supervision',
+			'external_examiner'
 		];
 		$(document).on('submit', '.ajax-form', function() {
 			var form = $(this);
@@ -216,7 +217,7 @@
 								json.action == "other_contributions" || json.action == "journal_articles" ||
 								json.action == "presented_conferences" || json.action == "research_profile" ||
 								json.action == "books_authored" || json.action == "funded_research_projects" ||
-								json.action == "research_supervision") && json.sts == "success") {
+								json.action == "research_supervision" || json.action == "external_examiner") && json.sts == "success") {
 							setTimeout(function() {
 								$(".modal").modal('hide');
 								window.location = window.location.href;
