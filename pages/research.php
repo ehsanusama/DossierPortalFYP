@@ -50,6 +50,7 @@
                             <div class="col-md-6">
                                 <label for="">Title</label>
                                 <select name="research_domain_title" class="form-control">
+                                    <option value="" disabled selected>Select Category</option>
                                     <?php foreach ($researchData as $value) :
                                         // $selected = ($value == $fetchSale['payment_type']) ? "selected" : "";
                                     ?>
@@ -100,10 +101,11 @@
                 </thead>
                 <tbody>
                     <?php
-                    echo count($researchData);
                     for ($i = 0; $i < count($researchData); $i++) : ?>
                         <tr>
-                            <td><?= $researchData[$i]; ?></td>
+                            <td><?= $researchData[$i]; ?>
+                                <a href="index.php?nav=<?= $_REQUEST['nav'] ?>&delete_research=<?= $researchData[$i]; ?>&table=research_data&field=research_domain_title&user_id=<?= $fetchUser['user_id'] ?>" class="btn btn-primary btn-sm modal-action pull-right"> <i class="fa fa-edit" aria-hidden="true"></i> Clear Data</a>
+                            </td>
                             <td style="padding: 0;">
                                 <table class="table table-bordered" cellspacing="0" height="100%">
                                     <?php
@@ -115,8 +117,8 @@
                                             $value = (array) $value;
                                     ?>
                                             <tr>
-                                                <td style="width: 50%;"><?= $value['research_domain_text'] ?></td>
-                                                <td style="width: 50%;"><?= $value['research_domain_details'] ?></td>
+                                                <td style="width: 50%;"><?= @$value['research_domain_text'] ?></td>
+                                                <td style="width: 50%;"><?= @$value['research_domain_details'] ?></td>
                                             </tr>
                                     <?php endforeach;
                                     endwhile;

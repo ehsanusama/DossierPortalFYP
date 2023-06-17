@@ -1118,6 +1118,197 @@ if (!empty($_REQUEST['action'])) {
                 ];
             }
         }
+    }/*research_profile*/ elseif ($_REQUEST['action'] == "research_profile") {
+
+        $data = [
+            'summary' => $_REQUEST['summary'],
+            'statement' => $_REQUEST['statement'],
+            'user_id' => $fetchUser['user_id']
+        ];
+        if (empty($_REQUEST['id'])) {
+
+            if (insert_data($dbc, "research_profile", $data)) {
+                $response = [
+                    "msg" => "Record Added Successfully",
+                    "sts" => "success",
+                    "action" => $_REQUEST['action']
+                ];
+            } else {
+                $response = [
+                    "msg" => mysqli_error($dbc),
+                    "sts" => "danger",
+                    "action" => $_REQUEST['action']
+                ];
+            }
+            # code...
+        } else {
+            if (update_data($dbc, "research_profile", $data, "id", $_REQUEST['id'])) {
+                $response = [
+                    "msg" => "Record Updated Successfully",
+                    "sts" => "success",
+                    "action" => $_REQUEST['action']
+                ];
+            } else {
+                $response = [
+                    "msg" => mysqli_error($dbc),
+                    "sts" => "danger",
+                    "action" => $_REQUEST['action']
+                ];
+            }
+        }
+    } /*research_output*/ elseif ($_REQUEST['action'] == "research_output") {
+
+        $data = [
+            'details' => $_REQUEST['details'],
+            'number' => $_REQUEST['number'],
+            'user_id' => $fetchUser['user_id']
+        ];
+
+        if (empty($_REQUEST['id'])) {
+            if (insert_data($dbc, "research_output", $data)) {
+                $response = [
+                    "msg" => "Record Added Successfully",
+                    "sts" => "success",
+                    "action" => $_REQUEST['action']
+                ];
+            } else {
+                $response = [
+                    "msg" => mysqli_error($dbc),
+                    "sts" => "danger",
+                    "action" => $_REQUEST['action']
+                ];
+            }
+            # code...
+        } else {
+            if (update_data($dbc, "research_output", $data, "id", $_REQUEST['id'])) {
+                $response = [
+                    "msg" => "Record Updated Successfully",
+                    "sts" => "success",
+                    "action" => $_REQUEST['action']
+                ];
+            } else {
+                $response = [
+                    "msg" => mysqli_error($dbc),
+                    "sts" => "danger",
+                    "action" => $_REQUEST['action']
+                ];
+            }
+        }
+    }
+    /****************taught_course_details*******************/
+    elseif ($_REQUEST['action'] == "books_authored") {
+        $data = [
+            'authors' => $_REQUEST['authors'],
+            'chapter' => $_REQUEST['chapter'],
+            'year' => $_REQUEST['year'],
+            'book' => $_REQUEST['book'],
+            'doi' => $_REQUEST['doi'],
+            'publisher' => $_REQUEST['publisher'],
+            'user_id' => $fetchUser['user_id']
+        ];
+        if (@$_FILES['f']['tmp_name']) {
+            upload_file($_FILES['f'], "../img/uploads/");
+            $data['document'] = $_SESSION['file_name'];
+        }
+        if (insert_data($dbc, "books_authored", $data)) {
+            $response = [
+                "msg" => "Record Inserted Successfully",
+                "sts" => "success",
+                "action" => $_REQUEST['action']
+            ];
+        } else {
+            $response = [
+                "msg" => mysqli_error($dbc),
+                "sts" => "danger",
+                "action" => $_REQUEST['action']
+            ];
+        }
+    }
+    /*funded_research_projects*/ elseif ($_REQUEST['action'] == "funded_research_projects") {
+        $data = [
+            'title' => $_REQUEST['title'],
+            'investigator' => $_REQUEST['investigator'],
+            'amount' => $_REQUEST['amount'],
+            'sponsor' => $_REQUEST['sponsor'],
+            'partner' => $_REQUEST['partner'],
+            'duration' => $_REQUEST['duration'],
+            'status ' => $_REQUEST['status'],
+            'user_id' => $fetchUser['user_id']
+        ];
+        if (empty($_REQUEST['id'])) {
+            if (insert_data($dbc, "funded_research_projects", $data)) {
+                $response = [
+                    "msg" => "Record Added Successfully",
+                    "sts" => "success",
+                    "action" => $_REQUEST['action']
+                ];
+            } else {
+                $response = [
+                    "msg" => mysqli_error($dbc),
+                    "sts" => "danger",
+                    "action" => $_REQUEST['action']
+                ];
+            }
+            # code...
+        } else {
+            if (update_data($dbc, "funded_research_projects", $data, "id", $_REQUEST['id'])) {
+                $response = [
+                    "msg" => "Record Updated Successfully",
+                    "sts" => "success",
+                    "action" => $_REQUEST['action']
+                ];
+            } else {
+                $response = [
+                    "msg" => mysqli_error($dbc),
+                    "sts" => "danger",
+                    "action" => $_REQUEST['action']
+                ];
+            }
+        }
+    }
+    /*research_supervision*/ elseif ($_REQUEST['action'] == "research_supervision") {
+        $data = [
+            'name' => $_REQUEST['name'],
+            'title' => $_REQUEST['title'],
+            'year' => $_REQUEST['year'],
+            'class' => $_REQUEST['class'],
+            'role' => $_REQUEST['role'],
+            'user_id' => $fetchUser['user_id']
+        ];
+        if (@$_FILES['f']['tmp_name']) {
+            upload_file($_FILES['f'], "../img/uploads/");
+            $data['file'] = $_SESSION['file_name'];
+        }
+        if (empty($_REQUEST['id'])) {
+            if (insert_data($dbc, "research_supervision", $data)) {
+                $response = [
+                    "msg" => "Record Added Successfully",
+                    "sts" => "success",
+                    "action" => $_REQUEST['action']
+                ];
+            } else {
+                $response = [
+                    "msg" => mysqli_error($dbc),
+                    "sts" => "danger",
+                    "action" => $_REQUEST['action']
+                ];
+            }
+            # code...
+        } else {
+            if (update_data($dbc, "research_supervision", $data, "id", $_REQUEST['id'])) {
+                $response = [
+                    "msg" => "Record Updated Successfully",
+                    "sts" => "success",
+                    "action" => $_REQUEST['action']
+                ];
+            } else {
+                $response = [
+                    "msg" => mysqli_error($dbc),
+                    "sts" => "danger",
+                    "action" => $_REQUEST['action']
+                ];
+            }
+        }
     } else {
     }
 }/*Action not empty*/

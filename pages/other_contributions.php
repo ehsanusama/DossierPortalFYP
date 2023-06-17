@@ -81,7 +81,10 @@
                     <?php
                     for ($i = 0; $i < count($otherContributions); $i++) : ?>
                         <tr>
-                            <td style="width:40%"><?= $otherContributions[$i]; ?></td>
+                            <td style="width:40%"><?= $otherContributions[$i]; ?>
+                                <a href="index.php?nav=<?= $_REQUEST['nav'] ?>&delete_research=<?= $otherContributions[$i]; ?>&table=other_contributions&field=contributions_domain_title&user_id=<?= $fetchUser['user_id'] ?>" class="btn btn-primary btn-sm modal-action pull-right"> <i class="fa fa-edit" aria-hidden="true"></i> Clear Data</a>
+
+                            </td>
                             <td style="padding: 0;">
                                 <table class="table table-bordered" cellspacing="0" height="100%">
                                     <?php

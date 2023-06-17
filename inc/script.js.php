@@ -124,7 +124,8 @@
 	$(function() {
 		var response_module = ["login", "forgot_password_module", "register_module", "executive_summary", 'register_staff_module',
 			'research_data', 'academic_data', 'other_contributions', 'professional_experience', 'taught_course_details',
-			'traning_conducted', 'academic_qualification', 'certifications', 'journal_articles', 'presented_conferences'
+			'traning_conducted', 'academic_qualification', 'certifications', 'journal_articles', 'presented_conferences',
+			'research_profile', 'research_output', 'books_authored', 'funded_research_projects', 'research_supervision'
 		];
 		$(document).on('submit', '.ajax-form', function() {
 			var form = $(this);
@@ -209,10 +210,13 @@
 								window.location = 'index.php'
 							}, 1500)
 						}
-						if ((json.action == "register_staff_module" || json.action == "professional_experience" ||
+						if ((json.action == "register_staff_module" || json.action == "research_data" || json.action == "professional_experience" ||
 								json.action == "taught_course_details" || json.action == "traning_conducted" ||
 								json.action == "academic_qualification" || json.action == "certifications" ||
-								json.action == "other_contributions" || json.action == "journal_articles" || json.action == "presented_conferences") && json.sts == "success") {
+								json.action == "other_contributions" || json.action == "journal_articles" ||
+								json.action == "presented_conferences" || json.action == "research_profile" ||
+								json.action == "books_authored" || json.action == "funded_research_projects" ||
+								json.action == "research_supervision") && json.sts == "success") {
 							setTimeout(function() {
 								$(".modal").modal('hide');
 								window.location = window.location.href;
