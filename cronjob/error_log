@@ -1,4 +1,0 @@
-[17-Sep-2022 08:00:59 Indian/Maldives] PHP Fatal error:  Uncaught Error: Call to undefined function base_url() in /home/attejkhq/public_html/dashboard/cronjob/weekly_report_summary.php:71
-Stack trace:
-#0 {main}
-  thrown in /home/attejkhq/public_html/dashboard/cronjob/weekly_report_summary.php on line 71

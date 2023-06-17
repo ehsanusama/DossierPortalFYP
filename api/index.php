@@ -1,16 +1,11 @@
 <?php @include_once '../inc/functions.php';
 @include_once '../mailerClass/PHPMailerAutoload.php';
 $response = [];
-//base_url() = https://attendezz.com/dashboard/api/
-$baseUrl = str_replace("api/", "", base_url()); // https://attendezz.com/dashboard/
-$email_body = '<center><div style="padding:50px;background:#fff;border:1px solid #eee;box-shadow:10px 10px 10px gray"><img src="http://attendezz.com/img/logo.png" width="80" height="80" alt=""> <h3>Attendezz <small>QR Attendance System</small></h3>';
+$baseUrl = str_replace("api/", "", base_url());
+$email_body = '<center><div style="padding:50px;background:#fff;border:1px solid #eee;box-shadow:10px 10px 10px gray"><img src="img/logo.png" width="80" height="80" alt=""> <h3>Dossier <small>History Management Portal</small></h3>';
 if (!empty($_REQUEST['action'])) {
 
     @$fetchUser = mysqli_fetch_assoc(mysqli_query($dbc, "SELECT * FROM users WHERE user_email='$_COOKIE[user_login]' OR username='$_COOKIE[user_login]'"));
-
-
-
-
     if ($_REQUEST['action'] == "login") {
         /* Login Process */
         $user_roles = [];
@@ -205,13 +200,13 @@ if (!empty($_REQUEST['action'])) {
             $new_password = substr(uniqid(), 0, 6);
             $email_body .= 'Hello, ' . strtoupper($fetchUserData['user_first_name']) . '<br>
 					Your temporary password is: <b>' . $new_password . '</b><br>
-					For security reasons, You can click the link<br><br><a href="https://attendezz.com/dashboard/" style="background:#008D4C;color:#fff;padding:6px 16px;text-decoration:none;line-height:24px ">Click here to login</a>
+					For security reasons, You can click the link<br><br><a href="https://dossier.com/dashboard/" style="background:#008D4C;color:#fff;padding:6px 16px;text-decoration:none;line-height:24px ">Click here to login</a>
 					 <br><br> we advise you to change your password after logging in.';
             $email_body .= '</div></center>';
             if ($server == 'localhost') {
-                $mail_response = send_email($user_email, "Attendezz - Your new password", $email_body);
+                $mail_response = send_email($user_email, "Dossier - Your new password", $email_body);
             } else {
-                $mail_response = mail($user_email, "Attendezz - Your new password", $email_body, $headers);
+                $mail_response = mail($user_email, "Dossier - Your new password", $email_body, $headers);
             }
 
             if ($mail_response) {
@@ -242,15 +237,15 @@ if (!empty($_REQUEST['action'])) {
         $email_body = '
                     <table style="max-width:700px ;align-content: center;font-family:sans-serif;" align="center">
                     <tr style="align-content: center">
-                    <td style="padding: 12px 30px;background-color: white;" ><img src="http://attendezz.com/img/logo.png" alt="Company Logo" width="50px" style="margin-left: 53%;"></td>
+                    <td style="padding: 12px 30px;background-color: white;" ><img src="http://Dossier.com/img/logo.png" alt="Company Logo" width="50px" style="margin-left: 53%;"></td>
                         </tr>
                         <tr style="align-content: center">
-                        <td> <img src="https://www.attendezz.com/img/confirm.gif" alt="" style="height:300px; width:300px;margin-left: 33%;"> </td>
+                        <td> <img src="https://www.Dossier.com/img/confirm.gif" alt="" style="height:300px; width:300px;margin-left: 33%;"> </td>
                         </tr>
                         <tr style="text-align: center;">
                             <td>
                               <h2 >Hi ' . strtoupper($fetchUserData['user_first_name']) . '</h2>
-                              <h3 style="text-align: center">Welcome to Attendezz!</p>
+                              <h3 style="text-align: center">Welcome to Dossier!</p>
                             </td>
                         </tr>
                            <tr style="text-align: center;">
@@ -264,26 +259,26 @@ if (!empty($_REQUEST['action'])) {
                             <tr style="text-align: center;">
                             <td>
                                 <p>This link expires in three days to maintain your security. If you<br> received this email by accident, feel free to ignore it. <br><br>
-                                                Thanks, from team Attendezz</p>
-                                                <i style="font-size:15px">This email has been sent to ' . $user_email . ' as part of your Attendezz account.</i>
+                                                Thanks, from team Dossier</p>
+                                                <i style="font-size:15px">This email has been sent to ' . $user_email . ' as part of your Dossier account.</i>
                             </td>
                           </tr>
                     <tr style="text-align: center;" >
                         <td >
         
                             <h5>Copyright &copy; 2023,All Rights Reserved</h5>
-                            <a href="' . FB_LINK . '"><img src="https://cdn-icons-png.flaticon.com/128/2504/2504903.png" width="30px"></a>
+                            <a href=""><img src="https://cdn-icons-png.flaticon.com/128/2504/2504903.png" width="30px"></a>
                             <a href=""><img src="https://cdn-icons-png.flaticon.com/128/2504/2504947.png" width="30px"></a>
-                            <a href="' . INSTA_LINK . '"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" width="30px"></a>
+                            <a href=""><img src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" width="30px"></a>
                         </td>
                     </tr>
                 </table>       
         ';
 
         if ($server == "localhost") {
-            $mail_response = send_email($user_email, "Attendezz - Time to verify your email", $email_body);
+            $mail_response = send_email($user_email, "Dossier - Time to verify your email", $email_body);
         } else {
-            $mail_response = mail($user_email, "Attendezz - Time to verify your email", $email_body, $headers);
+            $mail_response = mail($user_email, "Dossier - Time to verify your email", $email_body, $headers);
         }
         if ($mail_response) {
             $response = [
@@ -397,13 +392,13 @@ if (!empty($_REQUEST['action'])) {
             $data['user_password'] = md5($_REQUEST['user_password']);
             $data['user_created_id'] = $fetchUser['user_id'];
             $email_body = 'You have been invited by National Textile University to join an account on Dossier Portal! <br>
-												Please <a href="https://attendezz.com/dashboard" target="_blank">click the link</a> to login and set your account password. <br>
+												Please <a href="https://Dossier.com/dashboard" target="_blank">click the link</a> to login and set your account password. <br>
 												Your temporary password is: ' . $_REQUEST['user_password'] . '
 												<br><br>Thank you!<br>
-												Team Attendezz
+												Team Dossier
 												 <br><br>
 
-											<i style="font-size:10px">This email has been sent to ' . $fetchUser['user_email'] . ' as part of your Attendezz account.</i>';
+											<i style="font-size:10px">This email has been sent to ' . $fetchUser['user_email'] . ' as part of your Dossier account.</i>';
             if (!empty($_REQUEST['send_email']) and $_REQUEST['send_email'] == "yes") {
                 if ($server == "localhost") {
                     $mail_response = send_email($data['user_email'], "Welcome, - " . strtoupper($data['user_first_name']), $email_body);
@@ -455,9 +450,9 @@ if (!empty($_REQUEST['action'])) {
 											For security reasons, we advise you to change your password after logging in.';
                 if (!empty($_REQUEST['send_password']) and $_REQUEST['send_password'] == "yes") {
                     if ($server == "localhost") {
-                        $mail_response = send_email($data['user_email'], "Attendezz - New Password", $email_body);
+                        $mail_response = send_email($data['user_email'], "Dossier - New Password", $email_body);
                     } else {
-                        $mail_response = mail($data['user_email'], "Attendezz - New Password", $email_body, $headers);
+                        $mail_response = mail($data['user_email'], "Dossier - New Password", $email_body, $headers);
                     }
                 }
                 $response = [
@@ -479,16 +474,8 @@ if (!empty($_REQUEST['action'])) {
             $q = update_data($dbc, "users", ["user_status" => $_REQUEST['status']], 'user_id', $_REQUEST['id']);
         } elseif ($_REQUEST['table'] == "business") {
             $q = update_data($dbc, "business", ["business_status" => $_REQUEST['status']], 'business_id', $_REQUEST['id']);
-        } elseif ($_REQUEST['table'] == "business_tracking") {
-            $q = update_data($dbc, "business", ["is_tracking" => $_REQUEST['status']], 'business_id', $_REQUEST['id']);
         } elseif ($_REQUEST['table'] == "is_multiple") {
             $q = update_data($dbc, "users", ["is_multiple" => $_REQUEST['status']], 'user_id', $_REQUEST['id']);
-        } elseif ($_REQUEST['table'] == "is_tracking_staff") {
-            $q = update_data($dbc, "assign_business", ["is_tracking" => $_REQUEST['status']], 'id', $_REQUEST['id']);
-        } elseif ($_REQUEST['table'] == "business_weekly_promotion") {
-            $q = update_data($dbc, "business", ["weekly_promotion" => $_REQUEST['status']], 'business_id', $_REQUEST['id']);
-        } elseif ($_REQUEST['table'] == "get_notification") {
-            $q = update_data($dbc, "business", ["get_notification" => $_REQUEST['status']], 'business_id', $_REQUEST['id']);
         } else {
         }
         if ($q) {
@@ -516,7 +503,7 @@ if (!empty($_REQUEST['action'])) {
                     "msg" => "Profile Picture has been updated",
                     "sts" => "success",
                     "pic_name" => $name,
-                    "img_path" => 'https://www.attendezz.com/dashboard/img/staff/' . $name,
+                    "img_path" => 'https://www.Dossier.com/dashboard/img/staff/' . $name,
                     "action" => $_REQUEST['action']
                 ];
             } else {
@@ -1296,6 +1283,50 @@ if (!empty($_REQUEST['action'])) {
             # code...
         } else {
             if (update_data($dbc, "research_supervision", $data, "id", $_REQUEST['id'])) {
+                $response = [
+                    "msg" => "Record Updated Successfully",
+                    "sts" => "success",
+                    "action" => $_REQUEST['action']
+                ];
+            } else {
+                $response = [
+                    "msg" => mysqli_error($dbc),
+                    "sts" => "danger",
+                    "action" => $_REQUEST['action']
+                ];
+            }
+        }
+    }
+    /*research_supervision*/ elseif ($_REQUEST['action'] == "external_examiner") {
+        $data = [
+            'name' => $_REQUEST['name'],
+            'title' => $_REQUEST['title'],
+            'year' => $_REQUEST['year'],
+            'class' => $_REQUEST['class'],
+            'uni' => $_REQUEST['uni'],
+            'user_id' => $fetchUser['user_id']
+        ];
+        if (@$_FILES['f']['tmp_name']) {
+            upload_file($_FILES['f'], "../img/uploads/");
+            $data['file'] = $_SESSION['file_name'];
+        }
+        if (empty($_REQUEST['id'])) {
+            if (insert_data($dbc, "external_examiner", $data)) {
+                $response = [
+                    "msg" => "Record Added Successfully",
+                    "sts" => "success",
+                    "action" => $_REQUEST['action']
+                ];
+            } else {
+                $response = [
+                    "msg" => mysqli_error($dbc),
+                    "sts" => "danger",
+                    "action" => $_REQUEST['action']
+                ];
+            }
+            # code...
+        } else {
+            if (update_data($dbc, "external_examiner", $data, "id", $_REQUEST['id'])) {
                 $response = [
                     "msg" => "Record Updated Successfully",
                     "sts" => "success",
