@@ -272,9 +272,9 @@ if (!empty($_REQUEST['action'])) {
                         <td >
         
                             <h5>Copyright &copy; 2023,All Rights Reserved</h5>
-                            <a href="' . FB_LINK . '"><img src="https://cdn-icons-png.flaticon.com/128/2504/2504903.png" width="30px"></a>
+                            <a href=""><img src="https://cdn-icons-png.flaticon.com/128/2504/2504903.png" width="30px"></a>
                             <a href=""><img src="https://cdn-icons-png.flaticon.com/128/2504/2504947.png" width="30px"></a>
-                            <a href="' . INSTA_LINK . '"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" width="30px"></a>
+                            <a href=""><img src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" width="30px"></a>
                         </td>
                     </tr>
                 </table>       
