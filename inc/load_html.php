@@ -359,6 +359,70 @@ if (!empty($_REQUEST['action'])) : ?>
 				</div>
 			</form>
 		</div>
+	<?php endif;
+
+	/******** Personal Mission *********/
+	if ($_REQUEST['action'] == "initiatives_taken_form") :
+		@$fetchResearchProfile = (!empty($_REQUEST['field'])) ? fetchRecord($dbc, "initiatives_taken", 'id', $_REQUEST['field']) : "";
+		@$btn_value = (empty($fetchResearchProfile)) ? "Add" : "Update";
+	?>
+		<div class='portlet light'>
+			<form action="api/index.php" method="post" class="ajax-form" style='box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;padding:2%' id='' method="dialog">
+				<input type="hidden" name="action" value="initiatives_taken">
+				<input type="hidden" name="id" value="<?= @$fetchResearchProfile['id'] ?>">
+				<label for="">(7.2) Initiatives Taken </label>
+				<div class="form-group">
+					<textarea name="summary" class="form-control smsMessage" placeholder="Enter Your summary" id="" cols="30" rows="3"><?= @$fetchResearchProfile['summary'] ?></textarea>
+				</div>
+
+				<!-- Row -->
+				<div class='row'>
+					<button type="submit" class="btn btn-primary ml-2 "><?= $btn_value ?></button>
+				</div>
+			</form>
+		</div>
+	<?php endif;
+	/******** Personal Mission *********/
+	if ($_REQUEST['action'] == "member_conference_form") :
+		@$fetchResearchProfile = (!empty($_REQUEST['field'])) ? fetchRecord($dbc, "member_conference", 'id', $_REQUEST['field']) : "";
+		@$btn_value = (empty($fetchResearchProfile)) ? "Add" : "Update";
+	?>
+		<div class='portlet light'>
+			<form action="api/index.php" method="post" class="ajax-form" style='box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;padding:2%' id='' method="dialog">
+				<input type="hidden" name="action" value="member_conference">
+				<input type="hidden" name="id" value="<?= @$fetchResearchProfile['id'] ?>">
+				<label for="">(7.4) Member technical committee of international conference </label>
+				<div class="form-group">
+					<textarea name="summary" class="form-control smsMessage" placeholder="Enter Your summary" id="" cols="30" rows="3"><?= @$fetchResearchProfile['summary'] ?></textarea>
+				</div>
+
+				<!-- Row -->
+				<div class='row'>
+					<button type="submit" class="btn btn-primary ml-2 "><?= $btn_value ?></button>
+				</div>
+			</form>
+		</div>
+	<?php endif;
+	/******** Personal Mission *********/
+	if ($_REQUEST['action'] == "professional_training_form") :
+		@$fetchResearchProfile = (!empty($_REQUEST['field'])) ? fetchRecord($dbc, "professional_training", 'id', $_REQUEST['field']) : "";
+		@$btn_value = (empty($fetchResearchProfile)) ? "Add" : "Update";
+	?>
+		<div class='portlet light'>
+			<form action="api/index.php" method="post" class="ajax-form" style='box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;padding:2%' id='' method="dialog">
+				<input type="hidden" name="action" value="professional_training">
+				<input type="hidden" name="id" value="<?= @$fetchResearchProfile['id'] ?>">
+				<label for="">(7.6) Professional trainings Conducted for Industry </label>
+				<div class="form-group">
+					<textarea name="summary" class="form-control smsMessage" placeholder="Enter Your summary" id="" cols="30" rows="3"><?= @$fetchResearchProfile['summary'] ?></textarea>
+				</div>
+
+				<!-- Row -->
+				<div class='row'>
+					<button type="submit" class="btn btn-primary ml-2 "><?= $btn_value ?></button>
+				</div>
+			</form>
+		</div>
 <?php endif;
 endif;
 ?>

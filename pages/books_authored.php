@@ -25,10 +25,10 @@
                                 </tr>
 
                                 <tr class="product-row">
-                                    <td colspan="2"><input type="text" class="form-control" name="authors"></input></td>
+                                    <td colspan="2"><input type="text" class="form-control" name="authors" required></input></td>
                                     <td colspan="2"><input type="text" class="form-control " name="chapter"></td>
-                                    <td colspan="2"><input type="number" class="form-control " name="year"></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="book"></td>
+                                    <td colspan="2"><input type="number" class="form-control " name="year" required></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="book" required></td>
                                 </tr>
                                 <tr>
                                     <th colspan="2" class="text-center">DOI</th>
@@ -37,7 +37,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2"><input type="text" class="form-control " name="doi"></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="publisher"></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="publisher" required></td>
 
                                     <td colspan="1"><input type="file" id="img" class="center-block" name="f">
                                     </td>
@@ -94,7 +94,7 @@
                             <td><?= $row['book'] ?></td>
                             <td><?= $row['doi'] ?></td>
                             <td><?= $row['publisher'] ?></td>
-                            <td> <a href="#" onclick="deleteData('books_authored','id',<?= $row['user_id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                            <td> <a href="#" onclick="deleteData('books_authored','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 
                         </tr>
 

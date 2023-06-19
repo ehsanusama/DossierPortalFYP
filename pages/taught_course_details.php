@@ -24,11 +24,11 @@
                                     <th colspan="1">Document</th>
                                 </tr>
                                 <tr class="product-row">
-                                    <td colspan="2"><input type="text" class="form-control" name="title"></input></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="credit_hour"></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="teaching_hour"></td>
+                                    <td colspan="2"><input type="text" class="form-control" name="title" required></input></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="credit_hour" required></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="teaching_hour" required></td>
                                     <td colspan="2"><input type="text" class="form-control " name="phd_ms_bs"></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="year"></td>
+                                    <td colspan="2"><input type="number" class="form-control " name="year"></td>
                                     <td colspan="1"><input type="file" id="img" class="center-block" name="f">
                                     </td>
 
@@ -76,7 +76,7 @@
                             <td><?= $row['credit_hour'] ?></td>
                             <td><?= $row['teaching_hour'] ?></td>
                             <td><?= $row['phd_ms_bs'] ?></td>
-                            <td> <a href="#" onclick="deleteData('taught_course_details','id',<?= $row['user_id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                            <td> <a href="#" onclick="deleteData('taught_course_details','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 
                         </tr>
 

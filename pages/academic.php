@@ -41,7 +41,7 @@
                                 </tr>
                                 <tr class="product-row">
                                     <td colspan="2">
-                                        <input type="text" class="form-control" name="research_domain_text[]"></input>
+                                        <input type="text" class="form-control" name="research_domain_text[]" required></input>
                                     </td>
                                     <td colspan="2"><input type="text" class="form-control " name="research_domain_details[]"></td>
                                     <td colspan="1"><input type="file" name="f[]" class="form-control" id="img" style="width: 150px;"></td>

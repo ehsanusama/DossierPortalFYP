@@ -24,8 +24,8 @@
                                     <th>Action</th>
                                 </tr>
                                 <tr class="product-row">
-                                    <td colspan="2"><input type="text" class="form-control" name="degree[]"></input></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="research[]"></td>
+                                    <td colspan="2"><input type="text" class="form-control" name="degree[]" required></input></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="research[]" required></td>
                                     <td colspan="2"><input type="text" class="form-control " name="university[]"></td>
                                     <td colspan="2"><input type="text" class="form-control " name="major_field[]"></td>
                                     <td colspan="1"><input type="file" name="f[]" class="form-control" id="img" style="width: 150px;"></td>
@@ -50,8 +50,8 @@
                         <div class="row">
                             <table class="table">
                                 <tr class="product-row">
-                                    <td colspan="2"><input type="text" class="form-control" name="degree[]"></input></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="research[]"></td>
+                                    <td colspan="2"><input type="text" class="form-control" name="degree[]" required></input></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="research[]" required></td>
                                     <td colspan="2"><input type="text" class="form-control " name="university[]"></td>
                                     <td colspan="2"><input type="text" class="form-control " name="major_field[]"></td>
                                     <td colspan="1"><input type="file" name="f[]" class="form-control" id="img" style="width: 150px;"></td>

@@ -26,9 +26,9 @@
                                 </tr>
 
                                 <tr class="product-row">
-                                    <td colspan="2"><input type="text" class="form-control" name="name"></input></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="title"></td>
-                                    <td colspan="2"><input type="number" class="form-control " name="year"></td>
+                                    <td colspan="2"><input type="text" class="form-control" name="name" required></input></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="title" required></td>
+                                    <td colspan="2"><input type="number" class="form-control " name="year" required></td>
                                     <td colspan="2"> <select name="class" class="form-control">
                                             <option value="" disabled selected>Status</option>
                                             <option value="PhD">PhD</option>
@@ -95,7 +95,7 @@
                             <td><?= @$row['year'] ?></td>
                             <td><?= $row['class'] ?></td>
                             <td><?= @$row['uni'] ?></td>
-                            <td> <a href="#" onclick="deleteData('external_examiner','id',<?= $row['user_id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                            <td> <a href="#" onclick="deleteData('external_examiner','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
                         </tr>
 
                     <?php

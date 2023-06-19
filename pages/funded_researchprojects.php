@@ -32,9 +32,9 @@
                                             </tr>
 
                                             <tr class="product-row">
-                                                <td colspan="3"><input type="text" class="form-control" name="title"></input></td>
-                                                <td colspan="2"><input type="text" class="form-control " name="investigator"></td>
-                                                <td colspan="2"><input type="number" class="form-control " name="amount"></td>
+                                                <td colspan="3"><input type="text" class="form-control" name="title" required></input></td>
+                                                <td colspan="2"><input type="text" class="form-control " name="investigator" required></td>
+                                                <td colspan="2"><input type="number" class="form-control " name="amount" required></td>
                                             </tr>
                                             <tr>
                                                 <th colspan="2" class="text-center"> Sponsoring Agency</th>
@@ -103,7 +103,7 @@
                                         <td><?= $row['partner'] ?></td>
                                         <td><?= $row['duration'] ?></td>
                                         <td><?= $row['status'] ?></td>
-                                        <td> <a href="#" onclick="deleteData('funded_research_projects','id',<?= $row['user_id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                                        <td> <a href="#" onclick="deleteData('funded_research_projects','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 
                                     </tr>
 

@@ -126,7 +126,7 @@
 			'research_data', 'academic_data', 'other_contributions', 'professional_experience', 'taught_course_details',
 			'traning_conducted', 'academic_qualification', 'certifications', 'journal_articles', 'presented_conferences',
 			'research_profile', 'research_output', 'books_authored', 'funded_research_projects', 'research_supervision',
-			'external_examiner'
+			'external_examiner', 'collaboration_established', 'initiatives_taken', 'exhibitions_organized', 'awards_Honors', 'reviewer_articles'
 		];
 		$(document).on('submit', '.ajax-form', function() {
 			var form = $(this);
@@ -150,7 +150,9 @@
 								window.location = 'index.php'
 							}, 1500)
 						}
-						if ((json.action == "register_staff_module" || json.action == "executive_summary" || json.action == "research_data" || json.action == "academic_data" || json.action == "other_contributions") && json.sts == "success") {
+						if ((json.action == "register_staff_module" || json.action == "executive_summary" || json.action == "research_data" ||
+								json.action == "academic_data" || json.action == "other_contributions" || json.action == "collaboration_established" ||
+								json.action == "initiatives_taken" || json.action == "exhibitions_organized" || json.action == "awards_Honors") && json.sts == "success") {
 							setTimeout(function() {
 								$(".modal").modal('hide');
 								window.location = window.location.href
@@ -217,7 +219,8 @@
 								json.action == "other_contributions" || json.action == "journal_articles" ||
 								json.action == "presented_conferences" || json.action == "research_profile" ||
 								json.action == "books_authored" || json.action == "funded_research_projects" ||
-								json.action == "research_supervision" || json.action == "external_examiner") && json.sts == "success") {
+								json.action == "research_supervision" || json.action == "external_examiner" ||
+								json.action == "reviewer_articles") && json.sts == "success") {
 							setTimeout(function() {
 								$(".modal").modal('hide');
 								window.location = window.location.href;

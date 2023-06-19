@@ -26,9 +26,9 @@
                                 </tr>
 
                                 <tr class="product-row">
-                                    <td colspan="2"><input type="text" class="form-control" name="title"></input></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="year"></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="journal"></td>
+                                    <td colspan="2"><input type="text" class="form-control" name="title" required></input></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="year" required></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="journal" required></td>
                                     <td colspan="2"><input type="text" class="form-control " name="impact"></td>
                                     <td colspan="2"><input type="text" class="form-control " name="doi"></td>
                                     <td colspan="2"><input type="text" class="form-control " name="corresponding"></td>
@@ -80,7 +80,7 @@
                             <td><?= $row['impact'] ?></td>
                             <td><?= $row['doi'] ?></td>
                             <td><?= $row['corresponding'] ?></td>
-                            <td> <a href="#" onclick="deleteData('journal_articles','id',<?= $row['user_id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                            <td> <a href="#" onclick="deleteData('journal_articles','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 
                         </tr>
 

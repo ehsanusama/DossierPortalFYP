@@ -21,7 +21,7 @@
 
                                 </tr>
                                 <tr class="product-row">
-                                    <td colspan="6"><textarea type="text" class="form-control" name="details"></textarea></td>
+                                    <td colspan="6"><textarea type="text" class="form-control" name="details" required></textarea></td>
                                     <td colspan="1"><input type="file" id="img" name="f">
 
                                 </tr>
@@ -62,7 +62,7 @@
                         <tr>
                             <td colspan="col-md-4"><?= $row['details'] ?></td>
                             <td><?= $row['file'] ?></td>
-                            <td> <a href="#" onclick="deleteData('traning_conducted','id',<?= $row['user_id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                            <td> <a href="#" onclick="deleteData('traning_conducted','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 
                         </tr>
 

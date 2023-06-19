@@ -24,9 +24,9 @@
                                 </tr>
 
                                 <tr class="product-row">
-                                    <td colspan="2"><input type="text" class="form-control" name="author"></input></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="title"></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="held_at"></td>
+                                    <td colspan="2"><input type="text" class="form-control" name="author" required></input></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="title" required></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="held_at" required></td>
                                     <td colspan="2"><input type="text" class="form-control " name="conference_title"></td>
                                     <td colspan="2"><input type="file" name="f" class="form-control" id="img" style="width: 150px;"></td>
                                 </tr>
@@ -75,7 +75,7 @@
                             <td><?= $row['title'] ?></td>
                             <td><?= $row['held_at'] ?></td>
                             <td><?= $row['conference_title'] ?></td>
-                            <td> <a href="#" onclick="deleteData('presented_conferences','id',<?= $row['user_id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                            <td> <a href="#" onclick="deleteData('presented_conferences','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
                             </td>
                         </tr>
 

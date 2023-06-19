@@ -59,6 +59,9 @@
             $research_interests = fetchRecord($dbc, "research_interests", 'user_id', $fetchUser['user_id']);
             $personal_mission = fetchRecord($dbc, "personal_mission", 'user_id', $fetchUser['user_id']);
             $statement_teaching = fetchRecord($dbc, "statement_teaching", 'user_id', $fetchUser['user_id']);
+            $initiatives_taken = fetchRecord($dbc, "initiatives_taken", 'user_id', $fetchUser['user_id']);
+            $member_conference = fetchRecord($dbc, "member_conference", 'user_id', $fetchUser['user_id']);
+            $professional_training = fetchRecord($dbc, "professional_training", 'user_id', $fetchUser['user_id']);
         } ?>
         <span id="pdfBodyPortrait">
             <div class="portlet-body">
@@ -870,6 +873,174 @@
                         </table>
                     </div>
                 </div>
+
+                <!-------------------------------------->
+                <div class="container">
+                    <h2>(7) Administration/Other Contributions</h2>
+                    <h3>(7.1) MOU’s/ Collaboration established with National and International Organization </h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th class="text-center">Country </th>
+                                    <th class="text-center">University </th>
+                                    <th class="text-center">Type of Collaboration </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $sql = "SELECT * FROM collaboration_established WHERE user_id = $fetchUser[user_id]";
+                                $q = mysqli_query($dbc, $sql);
+                                $i = 1;
+                                while ($row = mysqli_fetch_assoc($q)) :
+                                ?>
+                                    <tr>
+                                        <td><?= $i ?></td>
+                                        <td><?= $row['country'] ?></td>
+                                        <td><?= $row['uni'] ?></td>
+                                        <td><?= $row['type'] ?></td>
+
+                                    </tr>
+
+                                <?php
+                                    $i++;
+                                endwhile;
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-------------------------------------->
+                <div class="container">
+                    <h3>(7.2) Initiatives Taken </h3>
+                    <?= $initiatives_taken['summary']; ?>
+                </div>
+                <!-------------------------------------->
+                <div class="container">
+                    <h3>(7.3) Conferences/Exhibitions Organized (As Organizer)</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th class="text-center">Conference Title</th>
+                                    <th class="text-center">Organizer </th>
+                                    <th class="text-center">Location </th>
+                                    <th class="text-center">Date </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $sql = "SELECT * FROM exhibitions_organized WHERE user_id = $fetchUser[user_id]";
+                                $q = mysqli_query($dbc, $sql);
+                                $i = 1;
+                                while ($row = mysqli_fetch_assoc($q)) :
+                                ?>
+                                    <tr>
+                                        <td><?= $i ?></td>
+                                        <td><?= $row['title'] ?></td>
+                                        <td><?= $row['organizer'] ?></td>
+                                        <td><?= $row['location'] ?></td>
+                                        <td><?= $row['date'] ?></td>
+                                    </tr>
+
+                                <?php
+                                    $i++;
+                                endwhile;
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-------------------------------------->
+                <div class="container">
+                    <h3>(7.4) Member technical committee of international conference</h3>
+                    <?= $member_conference['summary']; ?>
+
+                </div>
+                <!-------------------------------------->
+                <div class="container">
+                    <h3>(7.5) Awards & Honors</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th class="text-center">Name of Award </th>
+                                    <th class="text-center">Year </th>
+                                    <th class="text-center"> Awarding Body </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $sql = "SELECT * FROM awards_Honors WHERE user_id = $fetchUser[user_id]";
+                                $q = mysqli_query($dbc, $sql);
+                                $i = 1;
+                                while ($row = mysqli_fetch_assoc($q)) :
+                                ?>
+                                    <tr>
+                                        <td><?= $i ?></td>
+                                        <td><?= $row['name'] ?></td>
+                                        <td><?= $row['year'] ?></td>
+                                        <td><?= $row['body'] ?></td>
+
+                                    </tr>
+
+                                <?php
+                                    $i++;
+                                endwhile;
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-------------------------------------->
+                <div class="container">
+                    <h3>(7.6) Professional trainings Conducted for Industry</h3>
+                    <?= $professional_training['summary']; ?>
+
+                </div>
+                <!-------------------------------------->
+                <div class="container">
+                    <h3>(7.7) Other Services</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Role </th>
+                                    <th class="text-center">At </th>
+                                    <th class="text-center">Responsibilities </th>
+                                    <th class="text-center">From </th>
+                                    <th class="text-center">To </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $sql = "SELECT * FROM other_Services WHERE user_id = $fetchUser[user_id]";
+                                $q = mysqli_query($dbc, $sql);
+                                while ($row = mysqli_fetch_assoc($q)) :
+                                ?>
+                                    <tr>
+                                        <td><?= $row['role'] ?></td>
+                                        <td><?= $row['at'] ?></td>
+                                        <td><?= $row['duties'] ?></td>
+                                        <td><?= $row['year_from'] ?></td>
+                                        <td><?= $row['year_to'] ?></td>
+
+                                    </tr>
+
+                                <?php
+                                endwhile;
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 <!-----------------Annexure 1:--------------------->
 
                 <div class="container">
@@ -929,7 +1100,7 @@
                             $pdfFilePath = $file;
 
                             // Generate the HTML code for embedding the PDF
-                            $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:2700px" scrolling="off" ></iframe>';
+                            $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:700px" scrolling="off" ></iframe>';
 
                             // Output the HTML code
                             echo $html;
@@ -950,7 +1121,7 @@
                             $file = $containerPath . $row['document'];
                             $pdfFilePath = $file;
                             // Generate the HTML code for embedding the PDF
-                            $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:2700px" scrolling="off" ></iframe>';
+                            $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:700px" scrolling="off" ></iframe>';
                             // Output the HTML code
                             echo $html;
                         endwhile;
@@ -970,7 +1141,7 @@
                             $file = $containerPath . $row['file'];
                             $pdfFilePath = $file;
                             // Generate the HTML code for embedding the PDF
-                            $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:2700px" scrolling="off" ></iframe>';
+                            $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:700px" scrolling="off" ></iframe>';
                             // Output the HTML code
                             echo $html;
 
@@ -983,6 +1154,41 @@
                 <div class="container">
                     <h3>Annexure 6:</h4>
                         <h4>(6.4) Funded Research Projects (in progress):</h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Project Title </th>
+                                        <th class="text-center">Principal/CoPrincipal Investigator </th>
+                                        <th class="text-center">Amount in millions (PKR) </th>
+                                        <th class="text-center"> Sponsoring Agency</th>
+                                        <th class="text-center"> Partner (Industry)</th>
+                                        <th class="text-center"> Duration </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $sql = "SELECT * FROM funded_research_projects WHERE user_id = $fetchUser[user_id] and status ='inprogress'";
+                                    $q = mysqli_query($dbc, $sql);
+                                    while ($row = mysqli_fetch_assoc($q)) :
+                                    ?>
+                                        <tr>
+                                            <td><?= $row['title'] ?></td>
+                                            <td><?= $row['investigator'] ?></td>
+                                            <td><?= $row['amount'] ?></td>
+                                            <td><?= $row['sponsor'] ?></td>
+                                            <td><?= $row['partner'] ?></td>
+                                            <td><?= $row['duration'] ?></td>
+
+                                        </tr>
+
+                                    <?php
+                                    endwhile;
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
 
                 </div>
                 <!-----------------Annexure 7:--------------------->
@@ -990,23 +1196,92 @@
                 <div class="container">
                     <h3>Annexure 7:</h4>
                         <h4>PhD Thesis completed (As Supervisor):</h4>
+                        <?php
+                        $sql = "SELECT * FROM research_supervision WHERE user_id = $fetchUser[user_id] and class ='PhD' and role='Supervisor' and status ='completed'";
+                        $professional_experience_q = mysqli_query($dbc, $sql);
+                        while ($row = mysqli_fetch_assoc($professional_experience_q)) :
+                            $containerPath = "img/uploads/";
+                            $file = $containerPath . $row['file'];
+                            $pdfFilePath = $file;
+                            // Generate the HTML code for embedding the PDF
+                            $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:700px" scrolling="off" ></iframe>';
+                            // Output the HTML code
+                            echo $html;
 
+                        endwhile;
+                        ?>
                 </div>
                 <div class="container">
                     <h3>Annexure 8:</h4>
                         <h4>PhD Thesis in progress (As Supervisor):</h4>
+                        <?php
+                        $sql = "SELECT * FROM research_supervision WHERE user_id = $fetchUser[user_id] and class ='PhD' and role='Supervisor' and status ='inprogress'";
+                        $professional_experience_q = mysqli_query($dbc, $sql);
+                        while ($row = mysqli_fetch_assoc($professional_experience_q)) :
+                            $containerPath = "img/uploads/";
+                            $file = $containerPath . $row['file'];
+                            $pdfFilePath = $file;
+                            // Generate the HTML code for embedding the PDF
+                            $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:700px" scrolling="off" ></iframe>';
+                            // Output the HTML code
+                            echo $html;
+
+                        endwhile;
+                        ?>
                 </div>
                 <div class="container">
                     <h3>Annexure 9:</h4>
                         <h4>MS Thesis in completed (As Supervisor):</h4>
+                        <?php
+                        $sql = "SELECT * FROM research_supervision WHERE user_id = $fetchUser[user_id] and class ='MS' and role='Supervisor' and status ='inprogress'";
+                        $professional_experience_q = mysqli_query($dbc, $sql);
+                        while ($row = mysqli_fetch_assoc($professional_experience_q)) :
+                            $containerPath = "img/uploads/";
+                            $file = $containerPath . $row['file'];
+                            $pdfFilePath = $file;
+                            // Generate the HTML code for embedding the PDF
+                            $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:700px" scrolling="off" ></iframe>';
+                            // Output the HTML code
+                            echo $html;
+
+                        endwhile;
+                        ?>
                 </div>
                 <div class="container">
                     <h3>Annexure 10:</h4>
                         <h4>Reviewer of Research Article:</h4>
+                        <?php
+                        $sql = "SELECT * FROM reviewer_articles WHERE user_id = $fetchUser[user_id]";
+                        $reviewer_articles = mysqli_query($dbc, $sql);
+                        while ($row = mysqli_fetch_assoc($reviewer_articles)) :
+                            $containerPath = "img/uploads/";
+                            $file = $containerPath . $row['file'];
+                            $pdfFilePath = $file;
+                            // Generate the HTML code for embedding the PDF
+                            $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:700px" scrolling="off" ></iframe>';
+                            // Output the HTML code
+                            echo $html;
+
+                        endwhile;
+                        ?>
                 </div>
                 <div class="container">
                     <h3>Annexure 11:</h4>
                         <h4>Papers presented in Conferences:</h4>
+                        <?php
+                        $sql = "SELECT * FROM presented_conferences WHERE user_id = $fetchUser[user_id]";
+                        $presented_conferences = mysqli_query($dbc, $sql);
+                        while ($row = mysqli_fetch_assoc($presented_conferences)) :
+                            $containerPath = "img/uploads/";
+                            $file = $containerPath . $row['file'];
+                            $pdfFilePath = $file;
+                            // Generate the HTML code for embedding the PDF
+                            $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:700px" scrolling="off" ></iframe>';
+                            // Output the HTML code
+                            echo $html;
+
+                        endwhile;
+                        ?>
                 </div>
             </div>
         </span>

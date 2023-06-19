@@ -19,37 +19,43 @@
                             <table class="table">
                                 <tr>
                                     <th colspan="2" class="text-center">Student’s Name </th>
-                                    <th colspan="2" class="text-center">Thesis Title</th>
-                                    <th colspan="2" class="text-center">Year </th>
+                                    <th colspan="3" class="text-center">Thesis Title</th>
+                                    <th colspan="1" class="text-center">Year </th>
                                     <th colspan="2" class="text-center">Class </th>
 
                                 </tr>
 
                                 <tr class="product-row">
-                                    <td colspan="2"><input type="text" class="form-control" name="name"></input></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="title"></td>
-                                    <td colspan="2"><input type="number" class="form-control " name="year"></td>
+                                    <td colspan="2"><input type="text" class="form-control" name="name" required></input></td>
+                                    <td colspan="3"><input type="text" class="form-control " name="title" required></td>
+                                    <td colspan="1"><input type="number" class="form-control " name="year" required></td>
                                     <td colspan="2"> <select name="class" class="form-control">
-                                            <option value="" disabled selected>Status</option>
+                                            <option value="" disabled selected>Degree</option>
                                             <option value="PhD">PhD</option>
                                             <option value="MS">MS</option>
                                             <option value="BS">BS</option>
                                         </select></td>
                                 </tr>
                                 <tr>
-                                    <th colspan="2">AS</th>
-
-                                    <th colspan="1">Document</th>
+                                    <th colspan="2" class="text-center">AS</th>
+                                    <th colspan="2" class="text-center">Status</th>
+                                    <th colspan="1" class="text-center">Document</th>
                                 </tr>
                                 <tr>
                                     <td colspan="2"> <select name="role" class="form-control">
                                             <option value="" disabled selected>As</option>
                                             <option value="Supervisor">As Supervisor</option>
                                             <option value="Co-Supervisor">As Co-Supervisor</option>
-
                                         </select></td>
-                                    <td colspan="1"><input type="file" id="img" class="center-block" name="f">
+                                    <td colspan="2">
+                                        <select name="status" class="form-control">
+                                            <option value="" disabled selected>Status</option>
+                                            <option value="inprogress">Inprogress</option>
+                                            <option value="completed">Completed</option>
+
+                                        </select>
                                     </td>
+                                    <td colspan="1"><input type="file" id="img" class="center-block" name="f"></td>
                                 </tr>
                             </table>
                         </div><!-- row -->
@@ -80,6 +86,7 @@
                         <th class="text-center">Year </th>
                         <th class="text-center">Class </th>
                         <th>AS</th>
+                        <th>Status</th>
                         <th>Action</th>
 
                     </tr>
@@ -109,7 +116,8 @@
                                     <td><?= @$row['year'] ?></td>
                                     <td><?= $row['class'] ?></td>
                                     <td><?= @$row['role'] ?></td>
-                                    <td> <a href="#" onclick="deleteData('research_supervision','id',<?= $row['user_id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                                    <td><?= @$row['status'] ?></td>
+                                    <td> <a href="#" onclick="deleteData('research_supervision','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
                                 </tr>
 
                     <?php

@@ -22,8 +22,8 @@
 
                                     </tr>
                                     <tr class="product-row">
-                                        <td colspan="6"><input type="text" class="form-control" name="details"></input></td>
-                                        <td colspan="1"><input type="number" class="form-control" name="number">
+                                        <td colspan="6"><input type="text" class="form-control" name="details" required></input></td>
+                                        <td colspan="1"><input type="number" class="form-control" name="number" required>
 
                                     </tr>
                                 </table>
@@ -65,7 +65,7 @@
                         <tr>
                             <td colspan="3"><?= $row['details'] ?></td>
                             <td><?= $row['number'] ?></td>
-                            <td> <a href="#" onclick="deleteData('research_output','id',<?= $row['user_id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                            <td> <a href="#" onclick="deleteData('research_output','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 
                         </tr>
 
