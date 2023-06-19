@@ -43,17 +43,18 @@
                 <a href="index.php?nav=<?= base64_encode("generate_pdf") ?>&generate_pdf=<?= $fetchUser['user_id'] ?>" class="btb btn-primary btn-lg">Generate PDF</a>
             </div>
         </div>
-
-        <div class="hidden-print btn-group pull-right">
-            <a style="font-size: 12px" href="#!" onclick="window.print()" class="btn btn-warning"><span class="fa fa-print"></span> Print</a>
-            <a style="font-size: 12px" href="#!" onclick="takeScreenshot()" class="btn btn-info"><span class="fa fa-camera"></span> Take Screenshot</a>
-            <button style="font-size: 12px" class="btn btn-danger pdf_portrait_btn hidden-print">Export PDF</button>
-        </div>
+        <?php if (!empty($_REQUEST['generate_pdf'])) : ?>
+            <div class="hidden-print btn-group">
+                <a style="font-size: 12px" href="#!" onclick="window.print()" class="btn btn-warning"><span class="fa fa-print"></span> Print</a>
+                <!-- <button style="font-size: 12px" class="btn btn-danger pdf_portrait_btn hidden-print">Export PDF</button> -->
+            </div>
+        <?php endif; ?>
     </div>
 
 </div>
 
 <div class="portlet light">
+
     <?php if (!empty($_REQUEST['generate_pdf'])) : {
             $summary = fetchRecord($dbc, "executive_summary", 'user_id', $fetchUser['user_id']);
             $research_interests = fetchRecord($dbc, "research_interests", 'user_id', $fetchUser['user_id']);
