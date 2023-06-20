@@ -7,7 +7,11 @@
     <div class="portlet-title">
         <h2 class=''>(6.7) Research Supervision:</h2>
     </div>
-
+    <?php
+    if (!empty($_REQUEST['research_supervision_edit'])) {
+        $fetch_research_supervision = fetchRecord($dbc, "research_supervision", "id", $_REQUEST['research_supervision_edit']);
+    }
+    ?>
     <div class='portlet-body'>
         <form action="api/index.php" method="post" class="ajax-form-with-file" enctype="multipart/form-data">
             <input type="hidden" name="action" value="research_supervision">
@@ -26,9 +30,9 @@
                                 </tr>
 
                                 <tr class="product-row">
-                                    <td colspan="2"><input type="text" class="form-control" name="name" required></input></td>
-                                    <td colspan="3"><input type="text" class="form-control " name="title" required></td>
-                                    <td colspan="1"><input type="number" class="form-control " name="year" required></td>
+                                    <td colspan="2"><input type="text" class="form-control" name="name" required value="<?= @$fetch_research_supervision['name'] ?>"></input></td>
+                                    <td colspan="3"><input type="text" class="form-control " name="title" required value="<?= @$fetch_research_supervision['title'] ?>"></td>
+                                    <td colspan="1"><input type="number" class="form-control " name="year" required value="<?= @$fetch_research_supervision['year'] ?>"></td>
                                     <td colspan="2"> <select name="class" class="form-control">
                                             <option value="" disabled selected>Degree</option>
                                             <option value="PhD">PhD</option>
@@ -55,7 +59,9 @@
 
                                         </select>
                                     </td>
-                                    <td colspan="1"><input type="file" id="img" class="center-block" name="f"></td>
+                                    <td colspan="1"><input type="file" id="img" class="center-block" name="f" value="<?= @$fetch_research_supervision['file'] ?>"></td>
+                                    <input type="hidden" name="id" value="<?= @$fetch_research_supervision['id'] ?>">
+
                                 </tr>
                             </table>
                         </div><!-- row -->
@@ -117,7 +123,9 @@
                                     <td><?= $row['class'] ?></td>
                                     <td><?= @$row['role'] ?></td>
                                     <td><?= @$row['status'] ?></td>
-                                    <td> <a href="#" onclick="deleteData('research_supervision','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                                    <td>
+                                        <a href="index.php?nav=<?= $_REQUEST['nav'] ?>&research_supervision_edit=<?= $row['id'] ?>" class="btn  btn-primary btn-edit"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+                                        <a href="#" onclick="deleteData('research_supervision','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
                                 </tr>
 
                     <?php

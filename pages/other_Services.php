@@ -3,6 +3,11 @@
         display: block;
     }
 </style>
+<?php
+if (!empty($_REQUEST['other_Services_edit'])) {
+    $fetch_other_Services = fetchRecord($dbc, "other_Services", "id", $_REQUEST['other_Services_edit']);
+}
+?>
 <div class='portlet light'>
     <div class="portlet-title">
         <h2 class=''>(7.7) Other Services</h2>
@@ -24,11 +29,12 @@
 
                                 </tr>
                                 <tr class="product-row">
-                                    <td colspan="2"><input type="text" class="form-control" name="role" required></input></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="at" required></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="duties"></td>
-                                    <td colspan="1"><input type="number" class="form-control " name="from"></td>
-                                    <td colspan="1"><input type="number" class="form-control " name="to"></td>
+                                    <td colspan="2"><input type="text" class="form-control" name="role" required value="<?= @$fetch_other_Services['role'] ?>"></input></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="at" required value="<?= @$fetch_other_Services['at'] ?>"></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="duties" value="<?= @$fetch_other_Services['duties'] ?>"></td>
+                                    <td colspan="1"><input type="number" class="form-control " name="from" value="<?= @$fetch_other_Services['year_from'] ?>"></td>
+                                    <td colspan="1"><input type="number" class="form-control " name="to" value="<?= @$fetch_other_Services['year_to'] ?>"></td>
+                                    <input type="hidden" name="id" value="<?= @$fetch_other_Services['id'] ?>">
 
                                 </tr>
                             </table>
@@ -75,7 +81,9 @@
                             <td><?= $row['duties'] ?></td>
                             <td><?= $row['year_from'] ?></td>
                             <td><?= $row['year_to'] ?></td>
-                            <td> <a href="#" onclick="deleteData('other_Services','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                            <td>
+                                <a href="index.php?nav=<?= $_REQUEST['nav'] ?>&other_Services_edit=<?= $row['id'] ?>" class="btn  btn-primary btn-edit"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+                                <a href="#" onclick="deleteData('other_Services','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 
                         </tr>
 

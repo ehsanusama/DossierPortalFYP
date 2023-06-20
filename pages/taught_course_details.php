@@ -7,6 +7,11 @@
     <div class="portlet-title">
         <h2 class=''>(5.2) Detail of Courses Taught</h2>
     </div>
+    <?php
+    if (!empty($_REQUEST['taught_course_details_edit'])) {
+        $taught_course_details_edit = fetchRecord($dbc, "taught_course_details", "id", $_REQUEST['taught_course_details_edit']);
+    }
+    ?>
     <div class='portlet-body'>
         <form action="api/index.php" method="post" class="ajax-form-with-file" enctype="multipart/form-data">
             <input type="hidden" name="action" value="taught_course_details">
@@ -24,13 +29,14 @@
                                     <th colspan="1">Document</th>
                                 </tr>
                                 <tr class="product-row">
-                                    <td colspan="2"><input type="text" class="form-control" name="title" required></input></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="credit_hour" required></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="teaching_hour" required></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="phd_ms_bs"></td>
-                                    <td colspan="2"><input type="number" class="form-control " name="year"></td>
-                                    <td colspan="1"><input type="file" id="img" class="center-block" name="f">
+                                    <td colspan="2"><input type="text" class="form-control" name="title" required value="<?= @$taught_course_details_edit['title'] ?>"></input></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="credit_hour" required value="<?= @$taught_course_details_edit['credit_hour'] ?>"></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="teaching_hour" required value="<?= @$taught_course_details_edit['teaching_hour'] ?>"></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="phd_ms_bs" value="<?= @$taught_course_details_edit['phd_ms_bs'] ?>"></td>
+                                    <td colspan="2"><input type="number" class="form-control " name="year" value="<?= @$taught_course_details_edit['year'] ?>"></td>
+                                    <td colspan="1"><input type="file" id="img" class="center-block" name="f" value="<?= @$taught_course_details_edit['document'] ?>">
                                     </td>
+                                    <input type="hidden" name="id" value="<?= @$taught_course_details_edit['id'] ?>">
 
 
                                 </tr>
@@ -76,7 +82,10 @@
                             <td><?= $row['credit_hour'] ?></td>
                             <td><?= $row['teaching_hour'] ?></td>
                             <td><?= $row['phd_ms_bs'] ?></td>
-                            <td> <a href="#" onclick="deleteData('taught_course_details','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                            <td>
+                                <a href="index.php?nav=<?= $_REQUEST['nav'] ?>&taught_course_details_edit=<?= $row['id'] ?>" class="btn  btn-primary btn-edit"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+
+                                <a href="#" onclick="deleteData('taught_course_details','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 
                         </tr>
 

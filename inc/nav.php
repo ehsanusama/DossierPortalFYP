@@ -15,7 +15,7 @@ $page = "pages/" . $get_nav . ".php";
   <div class="page-header-inner ">
     <a href="index.php?nav=<?= base64_encode('home') ?>">
       <div class="page-logo" style="background-color: #ffffff;">
-        <span class="text-logo">Dossier </span>
+        <img src="img/nut-img.jpg" alt="" style="width: 65px;"> <span class="text-logo">Dossier</span>
       </div>
     </a>
     <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse" style="color:black"><i class="fa fa-align-justify"></i> </a>
@@ -83,12 +83,22 @@ $page = "pages/" . $get_nav . ".php";
             </ul>
 
           </li>
+          <li class=" dropdown">
 
-          <li style="margin-top: 9px;">
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 
-            <a class="nav-link text-danger" href="logout.php"> <i class="fa fa-power-off"></i> Logout</a>
+              <i class="fa fa-user"></i><?= ucwords(@$fetchUser['user_first_name']) ?>
+
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-default notifcation">
+              <li style="margin-top: 9px;">
+                <a class="nav-link text-danger" href="logout.php" style="color:red"> <i class="fa fa-power-off"></i> Logout</a>
+              </li>
+            </ul>
 
           </li>
+
 
         </ul>
 

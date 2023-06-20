@@ -7,6 +7,11 @@
     <div class="portlet-title">
         <h2 class=''>(9) Papers presented in Conferences </h2>
     </div>
+    <?php
+    if (!empty($_REQUEST['presented_conferences_edit'])) {
+        $fetch_presented_conferences = fetchRecord($dbc, "presented_conferences", "id", $_REQUEST['presented_conferences_edit']);
+    }
+    ?>
     <div class='portlet-body'>
         <form action="api/index.php" method="post" class="ajax-form-with-file" enctype="multipart/form-data">
             <input type="hidden" name="action" value="presented_conferences">
@@ -24,11 +29,12 @@
                                 </tr>
 
                                 <tr class="product-row">
-                                    <td colspan="2"><input type="text" class="form-control" name="author" required></input></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="title" required></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="held_at" required></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="conference_title"></td>
-                                    <td colspan="2"><input type="file" name="f" class="form-control" id="img" style="width: 150px;"></td>
+                                    <td colspan="2"><input type="text" class="form-control" name="author" required value="<?= @$fetch_presented_conferences['author'] ?>"></input></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="title" required value="<?= @$fetch_presented_conferences['title'] ?>"></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="held_at" required value="<?= @$fetch_presented_conferences['held_at'] ?>"></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="conference_title" value="<?= @$fetch_presented_conferences['conference_title'] ?>"></td>
+                                    <td colspan="2"><input type="file" name="f" class="form-control" id="img" style="width: 150px;" value="<?= @$fetch_presented_conferences['file'] ?>"></td>
+                                    <input type="hidden" name="id" value="<?= @$fetch_presented_conferences['id'] ?>">
                                 </tr>
                             </table>
                         </div><!-- row -->
@@ -75,7 +81,9 @@
                             <td><?= $row['title'] ?></td>
                             <td><?= $row['held_at'] ?></td>
                             <td><?= $row['conference_title'] ?></td>
-                            <td> <a href="#" onclick="deleteData('presented_conferences','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                            <td>
+                                <a href="index.php?nav=<?= $_REQUEST['nav'] ?>&presented_conferences_edit=<?= $row['id'] ?>" class="btn  btn-primary btn-edit"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+                                <a href="#" onclick="deleteData('presented_conferences','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
                             </td>
                         </tr>
 

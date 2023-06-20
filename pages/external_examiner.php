@@ -7,7 +7,11 @@
     <div class="portlet-title">
         <h2 class=''>(6.9) External Examiner/Referee of MS/PhD Thesis:</h2>
     </div>
-
+    <?php
+    if (!empty($_REQUEST['external_examiner_edit'])) {
+        $fetch_external_examiner = fetchRecord($dbc, "external_examiner", "id", $_REQUEST['external_examiner_edit']);
+    }
+    ?>
     <div class='portlet-body'>
         <form action="api/index.php" method="post" class="ajax-form-with-file" enctype="multipart/form-data">
             <input type="hidden" name="action" value="external_examiner">
@@ -26,9 +30,9 @@
                                 </tr>
 
                                 <tr class="product-row">
-                                    <td colspan="2"><input type="text" class="form-control" name="name" required></input></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="title" required></td>
-                                    <td colspan="2"><input type="number" class="form-control " name="year" required></td>
+                                    <td colspan="2"><input type="text" class="form-control" name="name" required value="<?= @$fetch_external_examiner['name'] ?>"></input></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="title" required value="<?= @$fetch_external_examiner['title'] ?>"></td>
+                                    <td colspan="2"><input type="number" class="form-control " name="year" required value="<?= @$fetch_external_examiner['year'] ?>"></td>
                                     <td colspan="2"> <select name="class" class="form-control">
                                             <option value="" disabled selected>Status</option>
                                             <option value="PhD">PhD</option>
@@ -42,8 +46,10 @@
                                     <th colspan="1">Document</th>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"> <input type="text" class="form-control " name="uni"></td>
+                                    <td colspan="2"> <input type="text" class="form-control " name="uni" value="<?= @$fetch_external_examiner['uni'] ?>"></td>
                                     <td colspan="1"><input type="file" id="img" class="center-block" name="f">
+                                        <input type="hidden" name="id" value="<?= @$fetch_external_examiner['id'] ?>">
+
                                     </td>
                                 </tr>
                             </table>
@@ -95,7 +101,9 @@
                             <td><?= @$row['year'] ?></td>
                             <td><?= $row['class'] ?></td>
                             <td><?= @$row['uni'] ?></td>
-                            <td> <a href="#" onclick="deleteData('external_examiner','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                            <td>
+                                <a href="index.php?nav=<?= $_REQUEST['nav'] ?>&external_examiner_edit=<?= $row['id'] ?>" class="btn  btn-primary btn-edit"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+                                <a href="#" onclick="deleteData('external_examiner','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
                         </tr>
 
                     <?php

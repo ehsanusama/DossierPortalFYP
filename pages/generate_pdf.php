@@ -916,7 +916,7 @@
                 <!-------------------------------------->
                 <div class="container">
                     <h3>(7.2) Initiatives Taken </h3>
-                    <?= $initiatives_taken['summary']; ?>
+                    <?= @$initiatives_taken['summary']; ?>
                 </div>
                 <!-------------------------------------->
                 <div class="container">
@@ -959,7 +959,7 @@
                 <!-------------------------------------->
                 <div class="container">
                     <h3>(7.4) Member technical committee of international conference</h3>
-                    <?= $member_conference['summary']; ?>
+                    <?= @$member_conference['summary']; ?>
 
                 </div>
                 <!-------------------------------------->
@@ -1002,7 +1002,7 @@
                 <!-------------------------------------->
                 <div class="container">
                     <h3>(7.6) Professional trainings Conducted for Industry</h3>
-                    <?= $professional_training['summary']; ?>
+                    <?= @$professional_training['summary']; ?>
 
                 </div>
                 <!-------------------------------------->
@@ -1059,9 +1059,12 @@
                                         $file = $containerPath . $document;
                                         $pdfFilePath = $file;
                                         // Generate the HTML code for embedding the PDF
+
                                         $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%;height:1122px" scrolling="off" ></iframe>';
                                         // Output the HTML code
-                                        echo $html;
+                                        if (!empty($pdfFilePath)) {
+                                            echo $html;
+                                        }
                                     }
                                 }
                             }
@@ -1083,7 +1086,9 @@
                             // Generate the HTML code for embedding the PDF
                             $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%;height:1122px" scrolling="off" ></iframe>';
                             // Output the HTML code
-                            echo $html;
+                            if (!empty($row['file'])) {
+                                echo $html;
+                            }
                         endwhile;
                         ?>
                 </div>
@@ -1104,7 +1109,9 @@
                             $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:700px" scrolling="off" ></iframe>';
 
                             // Output the HTML code
-                            echo $html;
+                            if (!empty($row['file'])) {
+                                echo $html;
+                            }
 
                         endwhile;
                         ?>
@@ -1124,7 +1131,9 @@
                             // Generate the HTML code for embedding the PDF
                             $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:700px" scrolling="off" ></iframe>';
                             // Output the HTML code
-                            echo $html;
+                            if (!empty($row['document'])) {
+                                echo $html;
+                            }
                         endwhile;
                         ?>
 
@@ -1144,7 +1153,9 @@
                             // Generate the HTML code for embedding the PDF
                             $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:700px" scrolling="off" ></iframe>';
                             // Output the HTML code
-                            echo $html;
+                            if (!empty($row['file'])) {
+                                echo $html;
+                            }
 
                         endwhile;
                         ?>
@@ -1207,7 +1218,9 @@
                             // Generate the HTML code for embedding the PDF
                             $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:700px" scrolling="off" ></iframe>';
                             // Output the HTML code
-                            echo $html;
+                            if (!empty($row['file'])) {
+                                echo $html;
+                            }
 
                         endwhile;
                         ?>
@@ -1225,7 +1238,9 @@
                             // Generate the HTML code for embedding the PDF
                             $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:700px" scrolling="off" ></iframe>';
                             // Output the HTML code
-                            echo $html;
+                            if (!empty($row['file'])) {
+                                echo $html;
+                            }
 
                         endwhile;
                         ?>
@@ -1243,7 +1258,9 @@
                             // Generate the HTML code for embedding the PDF
                             $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:700px" scrolling="off" ></iframe>';
                             // Output the HTML code
-                            echo $html;
+                            if (!empty($row['file'])) {
+                                echo $html;
+                            }
 
                         endwhile;
                         ?>
@@ -1261,7 +1278,9 @@
                             // Generate the HTML code for embedding the PDF
                             $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:700px" scrolling="off" ></iframe>';
                             // Output the HTML code
-                            echo $html;
+                            if (!empty($row['file'])) {
+                                echo $html;
+                            }
 
                         endwhile;
                         ?>
@@ -1279,7 +1298,9 @@
                             // Generate the HTML code for embedding the PDF
                             $html = '<iframe src="' . $pdfFilePath . '" style="width: 100%; min-height:700px" scrolling="off" ></iframe>';
                             // Output the HTML code
-                            echo $html;
+                            if (!empty($row['file'])) {
+                                echo $html;
+                            }
 
                         endwhile;
                         ?>

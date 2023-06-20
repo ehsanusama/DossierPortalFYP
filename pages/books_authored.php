@@ -7,7 +7,11 @@
     <div class="portlet-title">
         <h2 class=''>(6.3) Books Chapters authored:</h2>
     </div>
-
+    <?php
+    if (!empty($_REQUEST['books_authored_edit'])) {
+        $fetch_books_authored = fetchRecord($dbc, "books_authored", "id", $_REQUEST['books_authored_edit']);
+    }
+    ?>
     <div class='portlet-body'>
         <form action="api/index.php" method="post" class="ajax-form-with-file" enctype="multipart/form-data">
             <input type="hidden" name="action" value="books_authored">
@@ -25,10 +29,10 @@
                                 </tr>
 
                                 <tr class="product-row">
-                                    <td colspan="2"><input type="text" class="form-control" name="authors" required></input></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="chapter"></td>
-                                    <td colspan="2"><input type="number" class="form-control " name="year" required></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="book" required></td>
+                                    <td colspan="2"><input type="text" class="form-control" name="authors" required value="<?= @$fetch_books_authored['authors'] ?>"></input></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="chapter" value="<?= @$fetch_books_authored['chapter'] ?>"></td>
+                                    <td colspan="2"><input type="number" class="form-control " name="year" required value="<?= @$fetch_books_authored['year'] ?>"></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="book" required value="<?= @$fetch_books_authored['book'] ?>"></td>
                                 </tr>
                                 <tr>
                                     <th colspan="2" class="text-center">DOI</th>
@@ -36,11 +40,13 @@
                                     <th colspan="1">Document</th>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"><input type="text" class="form-control " name="doi"></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="publisher" required></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="doi" value="<?= @$fetch_books_authored['doi'] ?>"></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="publisher" required value="<?= @$fetch_books_authored['publisher'] ?>"></td>
 
-                                    <td colspan="1"><input type="file" id="img" class="center-block" name="f">
+                                    <td colspan="1"><input type="file" id="img" class="center-block" name="f" value="<?= @$fetch_books_authored['file'] ?>">
                                     </td>
+                                    <input type="hidden" name="id" value="<?= @$fetch_books_authored['id'] ?>">
+
                                 </tr>
                             </table>
                         </div><!-- row -->
@@ -94,7 +100,9 @@
                             <td><?= $row['book'] ?></td>
                             <td><?= $row['doi'] ?></td>
                             <td><?= $row['publisher'] ?></td>
-                            <td> <a href="#" onclick="deleteData('books_authored','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                            <td>
+                                <a href="index.php?nav=<?= $_REQUEST['nav'] ?>&books_authored_edit=<?= $row['id'] ?>" class="btn  btn-primary btn-edit"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+                                <a href="#" onclick="deleteData('books_authored','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 
                         </tr>
 

@@ -3,12 +3,11 @@
         display: block;
     }
 </style>
-
-<style>
-    dropdown-menu label {
-        display: block;
-    }
-</style>
+<?php
+if (!empty($_REQUEST['awards_Honors_edit'])) {
+    $fetch_awards_Honors = fetchRecord($dbc, "awards_Honors", "id", $_REQUEST['awards_Honors_edit']);
+}
+?>
 <div class='portlet light'>
     <div class="portlet-title">
         <h2 class=''>(7.5) Awards & Honors </h2>
@@ -27,9 +26,10 @@
                                     <th colspan="2" class="text-center"> Awarding Body </th>
                                 </tr>
                                 <tr class="product-row">
-                                    <td colspan="2"><input type="text" class="form-control" name="name" required></input></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="year" required></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="body"></td>
+                                    <td colspan="2"><input type="text" class="form-control" name="name" required value="<?= @$fetch_awards_Honors['name'] ?>"></input></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="year" required value="<?= @$fetch_awards_Honors['year'] ?>"></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="body" value="<?= @$fetch_awards_Honors['body'] ?>"></td>
+                                    <input type="hidden" name="id" value="<?= @$fetch_awards_Honors['id'] ?>">
 
                                 </tr>
                             </table>
@@ -76,7 +76,9 @@
                             <td><?= $row['name'] ?></td>
                             <td><?= $row['year'] ?></td>
                             <td><?= $row['body'] ?></td>
-                            <td> <a href="#" onclick="deleteData('awards_Honors','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                            <td>
+                                <a href="index.php?nav=<?= $_REQUEST['nav'] ?>&awards_Honors_edit=<?= $row['id'] ?>" class="btn  btn-primary btn-edit"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+                                <a href="#" onclick="deleteData('awards_Honors','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 
                         </tr>
 

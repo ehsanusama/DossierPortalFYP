@@ -11,6 +11,11 @@
                     display: block;
                 }
             </style>
+            <?php
+            if (!empty($_REQUEST['funded_research_projects_edit'])) {
+                $fetch_funded_research_projects = fetchRecord($dbc, "funded_research_projects", "id", $_REQUEST['funded_research_projects_edit']);
+            }
+            ?>
             <div class='portlet light'>
                 <div class="portlet-title">
                     <h2 class=''>(6.4) Funded Research Projects :</h2>
@@ -32,9 +37,9 @@
                                             </tr>
 
                                             <tr class="product-row">
-                                                <td colspan="3"><input type="text" class="form-control" name="title" required></input></td>
-                                                <td colspan="2"><input type="text" class="form-control " name="investigator" required></td>
-                                                <td colspan="2"><input type="number" class="form-control " name="amount" required></td>
+                                                <td colspan="3"><input type="text" class="form-control" name="title" required value="<?= @$fetch_funded_research_projects['title'] ?>"></input></td>
+                                                <td colspan="2"><input type="text" class="form-control " name="investigator" required value="<?= @$fetch_funded_research_projects['investigator'] ?>"></td>
+                                                <td colspan="2"><input type="number" class="form-control " name="amount" required value="<?= @$fetch_funded_research_projects['amount'] ?>"></td>
                                             </tr>
                                             <tr>
                                                 <th colspan="2" class="text-center"> Sponsoring Agency</th>
@@ -42,9 +47,9 @@
                                                 <th colspan="2" class="text-center"> Duration </th>
                                             </tr>
                                             <tr>
-                                                <td colspan="2"><input type="text" class="form-control " name="sponsor"></td>
-                                                <td colspan="2"><input type="text" class="form-control " name="partner"></td>
-                                                <td colspan="2"><input type="text" class="form-control " name="duration"></td>
+                                                <td colspan="2"><input type="text" class="form-control " name="sponsor" value="<?= @$fetch_funded_research_projects['sponsor'] ?>"></td>
+                                                <td colspan="2"><input type="text" class="form-control " name="partner" value="<?= @$fetch_funded_research_projects['partner'] ?>"></td>
+                                                <td colspan="2"><input type="text" class="form-control " name="duration" value="<?= @$fetch_funded_research_projects['duration'] ?>"></td>
                                                 <td colspan="2">
                                                     <select name="status" class="form-control">
                                                         <option value="" disabled selected>Status</option>
@@ -53,6 +58,8 @@
 
                                                     </select>
                                                 </td>
+                                                <input type="hidden" name="id" value="<?= @$fetch_funded_research_projects['id'] ?>">
+
                                                 </td>
                                             </tr>
                                         </table>
@@ -103,7 +110,9 @@
                                         <td><?= $row['partner'] ?></td>
                                         <td><?= $row['duration'] ?></td>
                                         <td><?= $row['status'] ?></td>
-                                        <td> <a href="#" onclick="deleteData('funded_research_projects','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                                        <td>
+                                            <a href="index.php?nav=<?= $_REQUEST['nav'] ?>&funded_research_projects_edit=<?= $row['id'] ?>" class="btn  btn-primary btn-edit"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+                                            <a href="#" onclick="deleteData('funded_research_projects','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 
                                     </tr>
 

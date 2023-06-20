@@ -7,6 +7,11 @@
     <div class="portlet-title">
         <h2 class=''>(8) List of Journal Articles </h2>
     </div>
+    <?php
+    if (!empty($_REQUEST['journal_articles_edit'])) {
+        $fetch_journal_articles = fetchRecord($dbc, "journal_articles", "id", $_REQUEST['journal_articles_edit']);
+    }
+    ?>
     <div class='portlet-body'>
         <form action="api/index.php" method="post" class="ajax-form-with-file" enctype="multipart/form-data">
             <input type="hidden" name="action" value="journal_articles">
@@ -26,13 +31,15 @@
                                 </tr>
 
                                 <tr class="product-row">
-                                    <td colspan="2"><input type="text" class="form-control" name="title" required></input></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="year" required></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="journal" required></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="impact"></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="doi"></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="corresponding"></td>
-                                    <td colspan="2"><input type="file" name="f" class="form-control" id="img" style="width: 150px;"></td>
+                                    <td colspan="2"><input type="text" class="form-control" name="title" required value="<?= @$fetch_journal_articles['title'] ?>"></input></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="year" required value="<?= @$fetch_journal_articles['year'] ?>"></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="journal" required value="<?= @$fetch_journal_articles['journal'] ?>"></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="impact" value="<?= @$fetch_journal_articles['impact'] ?>"></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="doi" value="<?= @$fetch_journal_articles['doi'] ?>"></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="corresponding" value="<?= @$fetch_journal_articles['corresponding'] ?>"></td>
+                                    <td colspan="2"><input type="file" name="f" class="form-control" id="img" style="width: 150px;" value="<?= @$fetch_journal_articles['file'] ?>"></td>
+                                    <input type="hidden" name="id" value="<?= @$fetch_journal_articles['id'] ?>">
+
                                 </tr>
                             </table>
                         </div><!-- row -->
@@ -80,7 +87,10 @@
                             <td><?= $row['impact'] ?></td>
                             <td><?= $row['doi'] ?></td>
                             <td><?= $row['corresponding'] ?></td>
-                            <td> <a href="#" onclick="deleteData('journal_articles','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                            <td>
+                                <a href="index.php?nav=<?= $_REQUEST['nav'] ?>&journal_articles_edit=<?= $row['id'] ?>" class="btn  btn-primary btn-edit"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+
+                                <a href="#" onclick="deleteData('journal_articles','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 
                         </tr>
 

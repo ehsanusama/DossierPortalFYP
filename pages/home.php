@@ -37,6 +37,7 @@
                                         <li> <a class="dropdown-item modal-action" href="index.php?nav=<?= base64_encode($value) ?>&business=<?= @$_SESSION['business'] ?>"><span class="<?= $navigation['icon'] ?>"></span> <?= ucwords($navigation['title']) ?></a>
                                         </li>
                                     <?php endif; ?>
+
                                 <?php endforeach; ?>
                             </ul>
                         </div>
@@ -68,8 +69,73 @@
 
 </div><!-- card -->
 
+
+<div class="portlet light">
+    <div class="portlet-body">
+        <?php
+        $dataArray = [
+            "academic_data",
+            "academic_qualification",
+            "awards_honors",
+            "books_authored",
+            "certifications",
+            "collaboration_established",
+            "curriculum_develop",
+            "develop_course_details",
+            "executive_summary",
+            "exhibitions_organized",
+            "external_examiner",
+            "funded_research_projects",
+            "initiatives_taken",
+            "journal_articles",
+            "member_conference",
+            "other_contributions",
+            "other_services",
+            "personal_mission",
+            "presented_conferences",
+            "professional_experience",
+            "professional_training",
+            "research_data",
+            "research_interests",
+            "research_output",
+            "research_profile",
+            "research_supervision",
+            "reviewer_articles",
+            "statement_teaching",
+            "taught_course_details",
+            "traning_conducted",
+        ];
+        // echo count($dataArray);
+        $progress = 0;
+        for ($i = 0; $i < count($dataArray); $i++) {
+            $percen = countWhen($dbc, $dataArray[$i], "user_id", $fetchUser['user_id']);
+
+            if ($percen > 0) {
+                $progress = $progress + 3.3;
+            }
+        }
+        echo $progress;
+        // @$table = mysqli_query($dbc, "SHOW TABLES");
+        // while ($tables_names = mysqli_fetch_assoc($table)) {
+        //     echo  $tables_names['Tables_in_dossier-porta-fyp'];
+        //     echo "<br>";
+        // }
+        ?>
+
+        <div class="project-state text-center">
+            <span class="badge badge-success text-capitalize">Profile</span> <br><br>
+            <div class="progress progress-sm">
+                <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width:<?= $progress . "%" ?>">
+                </div>
+            </div>
+            <small>
+                <?= $progress ?>% Completed
+            </small>
+        </div>
+    </div>
 </div>
 
+</div>
 
 
 

@@ -7,6 +7,11 @@
     <div class="portlet-title">
         <h2 class=''>(5.4) Curriculum Development & Review</h2>
     </div>
+    <?php
+    if (!empty($_REQUEST['curriculum_develop_edit'])) {
+        $fetch_curriculum_develop = fetchRecord($dbc, "curriculum_develop", "id", $_REQUEST['curriculum_develop_edit']);
+    }
+    ?>
     <div class='portlet-body'>
         <form action="api/index.php" method="post" class="ajax-form">
             <input type="hidden" name="action" value="curriculum_develop">
@@ -23,11 +28,13 @@
                                     <th colspan="1" class="text-center">To </th>
                                 </tr>
                                 <tr class="product-row">
-                                    <td colspan="2"><input type="text" class="form-control" name="institute"></input></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="position"></td>
-                                    <td colspan="2"><input type="text" class="form-control " name="duties"></td>
-                                    <td colspan="1"><input type="text" class="form-control " name="from"></td>
-                                    <td colspan="1"><input type="text" class="form-control " name="to"></td>
+                                    <td colspan="2"><input type="text" class="form-control" name="institute" value="<?= @$fetch_curriculum_develop['institute'] ?>"></input></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="position" value="<?= @$fetch_curriculum_develop['position'] ?>"></td>
+                                    <td colspan="2"><input type="text" class="form-control " name="duties" value="<?= @$fetch_curriculum_develop['duties'] ?>"></td>
+                                    <td colspan="1"><input type="text" class="form-control " name="from" value="<?= @$fetch_curriculum_develop['year_from'] ?>"></td>
+                                    <td colspan="1"><input type="text" class="form-control " name="to" value="<?= @$fetch_curriculum_develop['year_to'] ?>"></td>
+                                    <input type="hidden" name="id" value="<?= @$fetch_curriculum_develop['id'] ?>">
+
                                 </tr>
                             </table>
                         </div><!-- row -->
@@ -73,7 +80,10 @@
                             <td><?= $row['duties'] ?></td>
                             <td><?= $row['year_from'] ?></td>
                             <td><?= $row['year_to'] ?></td>
-                            <td> <a href="#" onclick="deleteData('curriculum_develop','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                            <td>
+                                <a href="index.php?nav=<?= $_REQUEST['nav'] ?>&curriculum_develop_edit=<?= $row['id'] ?>" class="btn  btn-primary btn-edit"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+
+                                <a href="#" onclick="deleteData('curriculum_develop','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 
                         </tr>
 

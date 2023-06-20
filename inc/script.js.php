@@ -152,7 +152,8 @@
 						}
 						if ((json.action == "register_staff_module" || json.action == "executive_summary" || json.action == "research_data" ||
 								json.action == "academic_data" || json.action == "other_contributions" || json.action == "collaboration_established" ||
-								json.action == "initiatives_taken" || json.action == "exhibitions_organized" || json.action == "awards_Honors") && json.sts == "success") {
+								json.action == "initiatives_taken" || json.action == "exhibitions_organized" || json.action == "awards_Honors" ||
+								json.action == "research_output" || json.action == "funded_research_projects") && json.sts == "success") {
 							setTimeout(function() {
 								$(".modal").modal('hide');
 								window.location = window.location.href

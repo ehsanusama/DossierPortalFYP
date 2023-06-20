@@ -324,7 +324,7 @@ function upload_file($file, $url)
 		$msg = "Not Allowed more than 5 MB file size";
 		unlink($temp_name);
 		// exit();
-	} elseif (!preg_match("/\.(doc|docx|xls|pdf)$/i", $file_name)) {
+	} elseif (!preg_match("/\.(doc|docx|xls|pdf|jpg|png|jpeg|JPG|PNG|JPEG)$/i", $file_name)) {
 		$sts = "info";
 		$msg = "Only .doc , .docx, .pdf and .xls file types are allowed";
 		unlink($temp_name);

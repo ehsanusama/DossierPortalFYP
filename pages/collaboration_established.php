@@ -11,6 +11,11 @@
                     display: block;
                 }
             </style>
+            <?php
+            if (!empty($_REQUEST['collaboration_established_edit'])) {
+                $fetch_collaboration_established = fetchRecord($dbc, "collaboration_established", "id", $_REQUEST['collaboration_established_edit']);
+            }
+            ?>
             <div class='portlet light'>
                 <div class="portlet-title">
                     <h2 class=''>(7.1) MOU’s/ Collaboration established with National and International Organization</h2>
@@ -29,9 +34,10 @@
                                                 <th colspan="2" class="text-center">Type of Collaboration </th>
                                             </tr>
                                             <tr class="product-row">
-                                                <td colspan="2"><input type="text" class="form-control" name="country"></input></td>
-                                                <td colspan="2"><input type="text" class="form-control " name="uni"></td>
-                                                <td colspan="2"><input type="text" class="form-control " name="type"></td>
+                                                <td colspan="2"><input type="text" class="form-control" name="country" value="<?= @$fetch_collaboration_established['country'] ?>"></input></td>
+                                                <td colspan="2"><input type="text" class="form-control " name="uni" value="<?= @$fetch_collaboration_established['uni'] ?>"></td>
+                                                <td colspan="2"><input type="text" class="form-control " name="type" value="<?= @$fetch_collaboration_established['type'] ?>"></td>
+                                                <input type="hidden" name="id" value="<?= @$fetch_collaboration_established['id'] ?>">
 
                                             </tr>
                                         </table>
@@ -78,7 +84,9 @@
                                         <td><?= $row['country'] ?></td>
                                         <td><?= $row['uni'] ?></td>
                                         <td><?= $row['type'] ?></td>
-                                        <td> <a href="#" onclick="deleteData('collaboration_established','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                                        <td>
+                                            <a href="index.php?nav=<?= $_REQUEST['nav'] ?>&collaboration_established_edit=<?= $row['id'] ?>" class="btn  btn-primary btn-edit"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+                                            <a href="#" onclick="deleteData('collaboration_established','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 
                                     </tr>
 

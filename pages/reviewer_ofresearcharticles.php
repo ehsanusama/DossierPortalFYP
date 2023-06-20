@@ -7,6 +7,11 @@
     <div class="portlet-title">
         <h2 class=''>(6.8) Reviewer of research articles: </h2>
     </div>
+    <?php
+    if (!empty($_REQUEST['reviewer_articles_edit'])) {
+        $fetch_reviewer_articles = fetchRecord($dbc, "reviewer_articles", "id", $_REQUEST['reviewer_articles_edit']);
+    }
+    ?>
     <div class='portlet-body'>
         <form action="api/index.php" method="post" class="ajax-form-with-file" enctype="multipart/form-data">
             <input type="hidden" name="action" value="reviewer_articles">
@@ -20,7 +25,8 @@
 
                                 </tr>
                                 <tr class="product-row">
-                                    <td colspan="4"><input type="file" id="img" name="f">
+                                    <td colspan="4"><input type="file" id="img" name="f" value="<?= @$fetch_reviewer_articles['file'] ?>">
+                                        <input type="hidden" name="id" value="<?= @$fetch_reviewer_articles['id'] ?>">
 
                                 </tr>
                             </table>
@@ -58,7 +64,10 @@
                     ?>
                         <tr>
                             <td><a target="_blank" href="img/uploads/<?= $row['file'] ?>"> <?= $row['file'] ?></a></td>
-                            <td> <a href="#" onclick="deleteData('reviewer_articles','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                            <td>
+                                <a href="index.php?nav=<?= $_REQUEST['nav'] ?>&reviewer_articles_edit=<?= $row['id'] ?>" class="btn  btn-primary btn-edit"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+
+                                <a href="#" onclick="deleteData('reviewer_articles','id',<?= $row['id'] ?>,'index.php?nav=<?= $_REQUEST['nav'] ?>',this)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 
                         </tr>
 

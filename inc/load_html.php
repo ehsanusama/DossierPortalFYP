@@ -191,7 +191,8 @@ if (!empty($_REQUEST['action'])) : ?>
 					</div><!-- form-group -->
 					<div class="form-group">
 						<label for="">Password</label>
-						<input type="password" placeholder="********" required class="form-control" name="user_password" autocomplete="off" value="<?= @$fetchStaff['user_password'] ?>">
+						<input type="password" placeholder="********" required class="form-control" name="user_password" autocomplete="off" value="<?= @$fetchStaff['user_password'] ?>" minlength="8" required pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$">
+						<span class="text-danger">Passwords must be at least 8 characters long and contain a combination of letters, numbers, and symbols.</span>
 					</div><!-- form-group -->
 					<div class="row">
 						<div class="col-sm-12">
