@@ -114,7 +114,7 @@
                 $progress = $progress + 3.3;
             }
         }
-        echo $progress;
+        // echo $progress;
         // @$table = mysqli_query($dbc, "SHOW TABLES");
         // while ($tables_names = mysqli_fetch_assoc($table)) {
         //     echo  $tables_names['Tables_in_dossier-porta-fyp'];
