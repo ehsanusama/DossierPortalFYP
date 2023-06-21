@@ -86,8 +86,8 @@ $page = "pages/" . $get_nav . ".php";
           <li class=" dropdown">
 
             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-
-              <i class="fa fa-user"></i><?= ucwords(@$fetchUser['user_first_name']) ?>
+              <img src="img/staff/<?= @$fetchUser['user_pic'] ?>" class="img  img-circle" alt="" style="width: 42px;margin-top: -10px;">
+              <?= ucwords(@$fetchUser['user_first_name']) ?>
 
             </a>
 

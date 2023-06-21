@@ -16,7 +16,7 @@ if (!empty($_REQUEST['action'])) {
         $count = mysqli_num_rows($q);
         if ($count == 1) {
             if (!empty($_REQUEST['platform']) and $_REQUEST['platform'] == "web") {
-                setcookie("user_login", $user_email, time() + (86400 * 30), "/");
+                setcookie("user_login", $user_email, time() + (7200), "/");
             }
 
             $fetchUserData = mysqli_fetch_assoc($q);

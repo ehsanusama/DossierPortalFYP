@@ -196,94 +196,12 @@ if (isset($_REQUEST['update_menu'])) {
 		$sts = "danger";
 	}
 }
-/*
-	Add Branch
-	*/
-if (isset($_REQUEST['add_branch'])) {
-
-	if ($_FILES['f']['tmp_name']) {
-		$dir = "img/uploads/";
-		upload_pic($_FILES['f'], $dir);
-		$user_pic = $_SESSION['pic_name'];
-	} else {
-		$user_pic = 'user_default.png';
-	}
-	$arr = [];
-	for ($i = 0; $i < count($_REQUEST['days']); $i++) {
-		$arr[] = [
-			$_REQUEST['days'][$i] =>
-			[
-				"opening_time" => (empty($_REQUEST['opening_time'][$i])) ? "" : date('H:i:s', strtotime($_REQUEST['opening_time'][$i])),
-				"closing_time" => (empty($_REQUEST['closing_time'][$i])) ? "" : date('H:i:s', strtotime($_REQUEST['closing_time'][$i]))
-			]
-		];
-	}
 
 
-
-	$data = [
-		'branch_name' => $_REQUEST['branch_name'],
-		'branch_logo' => $user_pic,
-		'branch_location' => $_REQUEST['branch_location'],
-		'branch_timing' => json_encode($arr),
-		'minute_allowed' => $_REQUEST['minute_allowed'],
-	];
-
-	if (insert_data($dbc, "branch", $data)) {
-		$msg = "Branch Added";
-		$sts = "success";
-		redirectCurrentURL(800);
-	} else {
-		$msg = mysqli_error($dbc);
-		$sts = "danger";
-	}
-}
-if (!empty($_REQUEST['edit_branch_id'])) {
-	$fetchBranchData = fetchRecord($dbc, "branch", "branch_id", base64_decode($_REQUEST['edit_branch_id']));
-	$branch_btn = '<button class="btn btn-primary" name="update_branch">Edit Branch</button>';
-} else {
-	$branch_btn = '<button class="btn btn-success" name="add_branch">Add Branch</button>';
-}
 /*
 	Update user Button
 	*/
-if (isset($_REQUEST['update_branch'])) {
-	for ($i = 0; $i < count($_REQUEST['days']); $i++) {
-		$arr[] = [
-			$_REQUEST['days'][$i] =>
-			[
-				"opening_time" => (empty($_REQUEST['opening_time'][$i])) ? "" : date('H:i:s', strtotime($_REQUEST['opening_time'][$i])),
-				"closing_time" => (empty($_REQUEST['closing_time'][$i])) ? "" : date('H:i:s', strtotime($_REQUEST['closing_time'][$i]))
-			]
-		];
-	}
-	@$data = [
-		'branch_name' => $_REQUEST['branch_name'],
-		'branch_location' => $_REQUEST['branch_location'],
-		'distance' => $_REQUEST['distance'],
-		'branch_timing' => json_encode($arr),
-		'minute_allowed' => $_REQUEST['minute_allowed'],
 
-	];
-	if ($_FILES['f']['tmp_name']) {
-		$dir = "img/uploads/";
-		upload_pic($_FILES['f'], $dir);
-		$user_pic = $_SESSION['pic_name'];
-		$data['branch_logo'] = $user_pic;
-	} else {
-		$user_pic = 'user_default.png';
-	}
-
-
-	if (update_data($dbc, "branch", $data, "branch_id", base64_decode($_REQUEST['edit_branch_id']))) {
-		$msg = "Branch Updated";
-		$sts = "success";
-		redirectCurrentURL(800);
-	} else {
-		$msg = mysqli_error($dbc);
-		$sts = "danger";
-	}
-}
 /*
 	Reset Password
 	*/
@@ -318,97 +236,12 @@ if (!empty($_REQUEST['action']) and $_REQUEST['action'] == "change_settings") {
 		$sts = "danger";
 	}
 }
-if (!empty($_REQUEST['setting_id'])) {
-	$fetchSettings = fetchRecord($dbc, "settings", "id", $_REQUEST['setting_id']);
-}
-if (isset($_REQUEST['setting_btn'])) {
-	$data = [
-		'company_name' => $_REQUEST['company_name'],
-		'title' => $_REQUEST['title'],
-		'email' => $_REQUEST['email'],
-		'phone' => $_REQUEST['phone'],
-		'distance' => $_REQUEST['distance'],
-		'location' => $_REQUEST['location'],
-		'status' => $_REQUEST['status'],
-		'open_hour' => $_REQUEST['open_hour'],
-		'close_hour' => $_REQUEST['close_hour'],
-		'minute_allowed' => $_REQUEST['minute_allowed'],
-	];
 
-	if ($_FILES['f']['tmp_name']) {
-		upload_pic($_FILES['f'], "img/uploads/");
-		$data["logo"] = $_SESSION['pic_name'];
-	}
 
-	if ($_REQUEST['setting_btn'] == "add") {
-		$q = insert_data($dbc, "settings", $data);
-	} else {
-		$q = update_data($dbc, "settings", $data, "id", $_REQUEST['id']);
-	}
-	if ($q) {
-		$msg = "Settings Changed";
-		$sts = "success";
-		redirectCurrentURL(500);
-	} else {
-		$msg = mysqli_error($dbc);
-		$sts = "danger";
-	}
-}
 /*Salary Module*/
-if (!empty($_REQUEST['edit_salary_id'])) {
-	$fetchSalary = fetchRecord($dbc, "salary", "id", base64_decode($_REQUEST['edit_salary_id']));
-}
-if (isset($_REQUEST['salary_btn'])) {
-	# code...
-	$data = [
-		'emp_id' => $_REQUEST['emp_id'],
-		'amount' => $_REQUEST['amount'],
-		'remarks' => $_REQUEST['remarks'],
-		'dated' => $_REQUEST['dated'],
-		'user_id' => $fetchUser['user_id']
-	];
-	if ($_REQUEST['salary_btn'] == "add") {
-		$q = insert_data($dbc, "salary", $data);
-	} else {
-		$q = update_data($dbc, "salary", $data, "id", base64_decode($_REQUEST['edit_salary_id']));
-	}
-	if ($q) {
-		$msg = "Data Submitted";
-		$sts = "success";
-		redirectCurrentURL(500);
-	} else {
-		$msg = mysqli_error($dbc);
-		$sts = "danger";
-	}
-}
 
-if (isset($_REQUEST['leave_btn'])) {
-	$from = date_create(date('Y-m-d', strtotime($_REQUEST['from'])));
-	$to = date_create(date('Y-m-d', strtotime($_REQUEST['to'])));
-	$diff = date_diff($from, $to);
-	$days = $diff->format("%d");
 
-	for ($i = 1; $i <= $days; $i++) {
-		$data = [
-			'emp_id' => @$_REQUEST['emp_id'],
-			'description' => @$_REQUEST['description'],
-			'att_date' => @date('Y-m-' . $i, strtotime($_REQUEST['from'])),
-			'admin_id' => @$fetchUser['user_id'],
-			'in_time' => @date('H:i:s', strtotime($_REQUEST['in_time'])),
-			'out_time' => @date('H:i:s', strtotime($_REQUEST['out_time'])),
-			'att_sts' => 'l'
-		];
-		$q = insert_data($dbc, "emp_attendance", $data);
-	}
-	if ($q) {
-		$msg = "Data Submitted";
-		$sts = "success";
-		redirectCurrentURL(500);
-	} else {
-		$msg = mysqli_error($dbc);
-		$sts = "danger";
-	}
-}
+
 /*Delete Backup file Code*/
 if (!empty($_REQUEST['delete_file'])) {
 	$msg = '<form action="" method="post">
